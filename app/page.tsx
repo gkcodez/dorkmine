@@ -62,7 +62,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full p-10">
+    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full px-2 py-10 lg:px-10 ">
                 {/* <Image
             src="/target.svg" // Replace with your image
             alt="Target Image"
