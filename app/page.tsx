@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 
 import { useEffect, useState } from "react";
 
-
 export default function Home() {
   const [cards, setCards] = useState<
     {
@@ -44,11 +43,11 @@ export default function Home() {
     window.open(url, "_blank");
   }
 
-  const handleTargetChange = (event) => {
+  const handleTargetChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTarget(event.target.value);
   };
 
-  const toggleFavorite = (event) => {
+  const toggleFavorite = (event: Dork) => {
     console.log(event);
     
   }
