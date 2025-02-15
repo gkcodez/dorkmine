@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of"
+  },
+  {
+    "id": 2,
+    "title": "Find config files",
+    "description": "Find config files using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": true
+  },
+  {
+    "id": 3,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": false
+  },
+  {
+    "id": 4,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": false
+  },
+  {
+    "id": 5,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": false
+  },
+  {
+    "id": 6,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": false
+  },
+  {
+    "id": 7,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": true
+  },
+  {
+    "id": 8,
+    "title": "Find directories",
+    "description": "Find directories using 'intitle:index.of'.",
+    "value": "intitle:index.of",
+    "favorite": true
+  }
+]
