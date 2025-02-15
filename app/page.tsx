@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
@@ -9,14 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 import { HeartIcon, FolderOpen, Edit, Save } from "lucide-react";
-import Image from "next/image";
 import { Input } from "@/components/ui/input";
 
 import { useEffect, useState } from "react";
