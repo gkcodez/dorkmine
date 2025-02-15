@@ -13,6 +13,7 @@ model Dork {
   description   String?
   value         String
   author        String?
+  category      String?
   favorite      Boolean   @default(false)
   createdAt     DateTime  @default(now())
 }

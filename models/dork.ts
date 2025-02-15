@@ -4,6 +4,7 @@ interface Dork {
     description?: string;
     value: string;
     author?: string;
+    category?: string;
     favorite: boolean;
     createdAt?: Date
 }
