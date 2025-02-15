@@ -15,24 +15,27 @@ import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [cards, setCards] = useState<
-    {
-      id: number;
-      title: string;
-      description: string;
-      value: string;
-      favorite: boolean;
-    }[]
-  >([]);
+  const [dorks, setDorks] = useState<Dork[]>([]);
   const [target, setTarget] = useState<string>("example.com")
   const [isUpdatingTarget, setIsUpdatingTarget] = useState<boolean>(false)
 
   useEffect(() => {
-    fetch("/data/dorks.json")
-      .then((res) => res.json())
-      .then((data) => setCards(data))
-      .catch((error) => console.error("Error loading cards:", error));
-  }, []);
+    const fetchDorks = async () => {
+      try {
+        const response = await fetch("/api/dorks"); // Adjust API URL if needed
+        if (!response.ok) {
+          throw new Error("Failed to fetch dorks");
+        }
+        const data = await response.json();
+        setDorks(data);
+      } catch (error) {
+        console.error("Error fetching dorks:", error);
+      }
+    };
+
+    fetchDorks();
+  }, []); // Runs once when component mounts.
+
 
   function googleSearch(searchTerm: string) {
     if(target) {
@@ -125,26 +128,26 @@ export default function Home() {
               </h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
-              {cards
+              {dorks
                 .filter((x) => x.favorite)
-                .map((card, index) => (
+                .map((dork, index) => (
                   <Card
                     key={index}
                     className="shadow-md border border-gray-200 hover:shadow-lg transition"
                   >
-                    <div onClick={() => googleSearch(card.value)}>
+                    <div onClick={() => googleSearch(dork.value)}>
                       <CardHeader>
                         <CardTitle className="text-lg font-normal">
-                          {card.title}
+                          {dork.title}
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-gray-600">{card.description}</p>
+                        <p className="text-gray-600">{dork.description}</p>
                       </CardContent>
                     </div>
                     <CardFooter className="flex items-center justify-end w-full">
                       <HeartIcon
-                        onClick={() => toggleFavorite(card)}
+                        onClick={() => toggleFavorite(dork)}
                         className="fill-red-600 text-red-500"
                       />
                     </CardFooter>
@@ -159,23 +162,23 @@ export default function Home() {
               </h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
-              {cards.map((card, index) => (
+              {dorks.map((dork, index) => (
                 <Card
                   key={index}
                   className="shadow-md border border-gray-200 hover:shadow-lg transition"
                 >
-                  <div onClick={() => googleSearch(card.value)}>
+                  <div onClick={() => googleSearch(dork.value)}>
                     <CardHeader>
                       <CardTitle className="text-lg font-normal">
-                        {card.title}
+                        {dork.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-gray-600">{card.description}</p>
+                      <p className="text-gray-600">{dork.description}</p>
                     </CardContent>
                   </div>
                   <CardFooter className="flex items-center justify-end w-full">
-                    <HeartIcon onClick={() => toggleFavorite(card)} />
+                    <HeartIcon onClick={() => toggleFavorite(dork)} />
                   </CardFooter>
                 </Card>
               ))}

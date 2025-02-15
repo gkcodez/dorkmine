@@ -1,7 +1,9 @@
 interface Dork {
-    id: number
-    title: string
-    description: string
-    value: string
-    favorite: boolean
+    id?: string;
+    title: string;
+    description?: string;
+    value: string;
+    author?: string;
+    favorite: boolean;
+    createdAt?: Date
 }
