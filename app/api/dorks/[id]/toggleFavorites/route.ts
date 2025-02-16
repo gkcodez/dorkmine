@@ -4,8 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(req: NextRequest, context: any) {
   try {
-      const { id } = context.params;
-  
+    const params = await context.params;
+    const { id } = params;
+      
       if (!id) {
         return NextResponse.json({ error: "ID is required" }, { status: 400 });
       }
