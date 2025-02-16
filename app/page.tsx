@@ -22,6 +22,10 @@ import {
   LogOutIcon,
   Target,
   TargetIcon,
+  SearchIcon,
+  FilterIcon,
+  SortAscIcon,
+  SortDescIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -29,6 +33,11 @@ import { useEffect, useState } from "react";
 
 import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localStorage";
 import { format } from "date-fns";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
@@ -125,7 +134,6 @@ export default function Home() {
     }
   };
 
-
   const handleEditButtonClick = () => {
     setIsUpdatingTarget(true);
   };
@@ -166,7 +174,9 @@ export default function Home() {
         <div className="flex flex-col w-full">
           <div className="flex items-center justify-center gap-2 flex-1 w-full p-2">
             <div className="flex items-center justify-center gap-2 w-full">
-              <span className="font-bold flex items-center gap-2"><TargetIcon /> Target: </span>{" "}
+              <span className="font-bold flex items-center gap-2">
+                <TargetIcon /> Target:{" "}
+              </span>{" "}
               {!isUpdatingTarget && (
                 <div className="flex items-center gap-2">
                   <span id="currentTarget" className="text-red-600">
@@ -247,68 +257,124 @@ export default function Home() {
             </div>
           </div> */}
           <div className="allDorks p-2">
-            <div className="flex items-center justify-items-center p-2 w-full">
-              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-indigo-600">
+            <div className="flex items-center justify-start p-2 w-full">
+              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-indigo-600 w-full">
                 <FolderOpen /> All Dorks
               </h3>
+              <div className="flex items-center gap-3">
+                <Popover>
+                  <PopoverTrigger>
+                    <SortDescIcon className="font-bold text-2xl" />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <form
+                      onSubmit={handleSearchSubmit}
+                      className="flex flex-col items-center gap-2 w-full"
+                    >
+                      <Input
+                        value={search}
+                        onChange={handleSearchChange}
+                        placeholder="Search dorks by title"
+                      />
+                      <div className="w-full flex items-center justify-end">
+                        <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                          <SortAscIcon /> Sort
+                        </Button>
+                      </div>
+                    </form>
+                  </PopoverContent>
+                </Popover>
+                <Popover>
+                  <PopoverTrigger>
+                    <FilterIcon className="font-bold text-2xl" />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <form
+                      onSubmit={handleSearchSubmit}
+                      className="flex flex-col items-center gap-2 w-full"
+                    >
+                      <Input
+                        value={search}
+                        onChange={handleSearchChange}
+                        placeholder="Search dorks by title"
+                      />
+                      <div className="w-full flex items-center justify-end">
+                        <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                          <FilterIcon /> Filter
+                        </Button>
+                      </div>
+                    </form>
+                  </PopoverContent>
+                </Popover>
+                <Popover>
+                  <PopoverTrigger>
+                    <SearchIcon className="font-bold text-2xl" />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <form
+                      onSubmit={handleSearchSubmit}
+                      className="flex items-center gap-2 w-full"
+                    >
+                      <Input
+                        value={search}
+                        onChange={handleSearchChange}
+                        placeholder="Search dorks by title"
+                      />
+                      <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                        Search
+                      </Button>
+                    </form>
+                  </PopoverContent>
+                </Popover>
+              </div>
             </div>
-            <div className="flex gap-2 flex-1 w-full lg:w-1/3 p-2">
-            <form
-              onSubmit={handleSearchSubmit}
-              className="flex items-center gap-2"
-            >
-              <Input
-                value={search}
-                onChange={handleSearchChange}
-                placeholder="Search dorks by title"
-              />
-              <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                Search
-              </Button>
-            </form>
-          </div>
+
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
               {dorks.map((dork, index) => (
                 <Card
-                key={index}
-                className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
-              >
-                <div className="flex flex-col justify-start">
-                <div className="w-full flex items-start justify-between">
-                  <CardHeader
-                    className="text-md w-full flex items-start justify-between"
+                  key={index}
+                  className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
+                >
+                  <div className="flex flex-col justify-start">
+                    <div className="w-full flex items-start justify-between">
+                      <CardHeader
+                        className="text-md w-full flex items-start justify-between"
+                        onClick={() => googleSearch(dork)}
+                      >
+                        <CardTitle>{dork.title}</CardTitle>
+                      </CardHeader>
+                      <HeartIcon
+                        onClick={() => toggleFavorite(dork.id)}
+                        className={`${
+                          dork.favorite ? "fill-red-600 text-red-700" : ""
+                        } relative top-2 right-2`}
+                      />
+                    </div>
+
+                    <CardContent onClick={() => googleSearch(dork)}>
+                      <p className="text-sm text-gray-600">
+                        {dork.description}
+                      </p>
+                    </CardContent>
+                  </div>
+                  <CardFooter
+                    className="flex items-center justify-between w-full"
                     onClick={() => googleSearch(dork)}
                   >
-                    <CardTitle>{dork.title}</CardTitle>
-                  </CardHeader>
-                  <HeartIcon
-                    onClick={() => toggleFavorite(dork.id)}
-                    className={`${dork.favorite ? "fill-red-600 text-red-700" : ""} relative top-2 right-2`}
-                  />
-                </div>
-
-                <CardContent onClick={() => googleSearch(dork)}>
-                  <p className="text-sm text-gray-600">{dork.description}</p>
-                </CardContent>
-                </div>
-                <CardFooter
-                  className="flex items-center justify-between w-full"
-                  onClick={() => googleSearch(dork)}
-                >
-                  <div className="flex items-center text-xs text-gray-400 gap-1">
-                    <Folder />
-                    <p>{dork.category}</p>
-                  </div>
-                  <div className="flex items-center text-xs text-gray-400 gap-1">
-                    <Calendar />
-                    <p>
-                      {dork.createdAt
-                        ? format(dork.createdAt, "dd/MM/yyyy")
-                        : ""}
-                    </p>
-                  </div>
-                </CardFooter>
-              </Card>
+                    <div className="flex items-center text-xs text-gray-400 gap-1">
+                      <Folder />
+                      <p>{dork.category}</p>
+                    </div>
+                    <div className="flex items-center text-xs text-gray-400 gap-1">
+                      <Calendar />
+                      <p>
+                        {dork.createdAt
+                          ? format(dork.createdAt, "dd/MM/yyyy")
+                          : ""}
+                      </p>
+                    </div>
+                  </CardFooter>
+                </Card>
               ))}
             </div>
           </div>
