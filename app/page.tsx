@@ -16,16 +16,14 @@ import {
   FolderOpen,
   Edit,
   Save,
-  FolderCog,
   Folder,
   Calendar,
-  LogOutIcon,
-  Target,
   TargetIcon,
   SearchIcon,
   FilterIcon,
   SortAscIcon,
   SortDescIcon,
+  Filter,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -38,6 +36,14 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
@@ -45,6 +51,26 @@ export default function Home() {
   const [target, setTarget] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [isUpdatingTarget, setIsUpdatingTarget] = useState<boolean>(false);
+  const options = [
+    { label: "Bug Bounty Programs", value: "bug_bounty_programs" },
+    { label: "Sensitive Files", value: "sensitive_files" },
+    { label: "Sensitive Functionalities", value: "sensitive_functionalities" },
+  ];
+
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+
+  const handleCheckboxChange = (value: string) => {
+    setSelectedOptions((prev) =>
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value]
+    );
+  };
+
+  const handleFilterSubmit = (e: any) => {
+    e.preventDefault();
+    console.log("Selected Filters:", selectedOptions);
+  };
 
   useEffect(() => {
     const localTarget = getFromLocalStorage("target");
@@ -271,11 +297,35 @@ export default function Home() {
                       onSubmit={handleSearchSubmit}
                       className="flex flex-col items-center gap-2 w-full"
                     >
-                      <Input
-                        value={search}
-                        onChange={handleSearchChange}
-                        placeholder="Search dorks by title"
-                      />
+                      <div className="w-full flex flex-col gap-2">
+                        <h3 className="flex items-center justify-start gap-2 font-semibold">
+                          <SortAscIcon /> Sort
+                        </h3>
+                        <hr />
+                        <div className="flex items-center justify-start gap-2">
+                          <Select>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Sort By" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="title">Title</SelectItem>
+                              <SelectItem value="created_date">
+                                Created Date
+                              </SelectItem>
+                            </SelectContent>
+                          </Select>
+
+                          <Select>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Sort Direction" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="asc">Ascending</SelectItem>
+                              <SelectItem value="desc">Descending</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
                       <div className="w-full flex items-center justify-end">
                         <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
                           <SortAscIcon /> Sort
@@ -290,14 +340,30 @@ export default function Home() {
                   </PopoverTrigger>
                   <PopoverContent>
                     <form
-                      onSubmit={handleSearchSubmit}
+                      onSubmit={handleFilterSubmit}
                       className="flex flex-col items-center gap-2 w-full"
                     >
-                      <Input
-                        value={search}
-                        onChange={handleSearchChange}
-                        placeholder="Search dorks by title"
-                      />
+                      <div className="w-full flex flex-col gap-2">
+                        <h3 className="flex items-center justify-start gap-2 font-semibold">
+                          <FilterIcon /> Filter
+                        </h3>
+                        <hr />
+                        <p className="font-semibold">Categories</p>
+                        {options.map(({ label, value }) => (
+                          <label
+                            key={value}
+                            className="flex items-center gap-2 text-sm"
+                          >
+                            <Checkbox
+                              checked={selectedOptions.includes(value)}
+                              onCheckedChange={() =>
+                                handleCheckboxChange(value)
+                              }
+                            />
+                            {label}
+                          </label>
+                        ))}
+                      </div>
                       <div className="w-full flex items-center justify-end">
                         <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
                           <FilterIcon /> Filter
@@ -313,16 +379,24 @@ export default function Home() {
                   <PopoverContent>
                     <form
                       onSubmit={handleSearchSubmit}
-                      className="flex items-center gap-2 w-full"
+                      className="flex flex-col items-start gap-2 w-full"
                     >
-                      <Input
-                        value={search}
-                        onChange={handleSearchChange}
-                        placeholder="Search dorks by title"
-                      />
-                      <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                        Search
-                      </Button>
+                      <div className="w-full flex flex-col gap-2">
+                        <h3 className="flex items-center justify-start gap-2 font-semibold">
+                          <SearchIcon /> Search
+                        </h3>
+                        <hr />
+                        <Input
+                          value={search}
+                          onChange={handleSearchChange}
+                          placeholder="Search dorks by title"
+                        />
+                      </div>
+                      <div className="w-full flex items-center justify-end">
+                        <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                          <SearchIcon /> Search
+                        </Button>
+                      </div>
                     </form>
                   </PopoverContent>
                 </Popover>
