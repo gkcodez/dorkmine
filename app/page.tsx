@@ -111,9 +111,10 @@ export default function Home() {
 
   function googleSearch(dork: Dork) {
     let searchTerm = dork.value;
-    if (target && dork.category != "Bug Bounty Programs") {
-      searchTerm = `site: ${target} ${searchTerm}`;
-    }
+    searchTerm = searchTerm.replaceAll("[TARGET]", target);
+    // if (target && dork.category != "Bug Bounty Programs") {
+    //   searchTerm = `site: ${target} ${searchTerm}`;
+    // }
     const baseUrl = "https://www.google.com";
     const url = `${baseUrl}/search?q=${encodeURIComponent(searchTerm)}`;
     window.open(url, `${dork.title}`);
