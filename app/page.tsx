@@ -20,6 +20,8 @@ import {
   Folder,
   Calendar,
   LogOutIcon,
+  Target,
+  TargetIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -136,7 +138,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full px-2 py-10 lg:px-10 ">
+    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full px-2">
       {/* <Image
         src="/target.svg" // Replace with your image
         alt="Target Image"
@@ -144,12 +146,12 @@ export default function Home() {
         height={300}
         className="rounded-lg"
       /> */}
-      <div className="flex flex-col items-center justify-items-center gap-2 w-full">
+      <div className="flex flex-col items-center justify-items-center gap-2 w-full my-5">
         <div className="flex flex-col gap-2 text-center">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-indigo-600">
             Dorkmine
           </h1>
-          <a
+          {/* <a
             href="http://linkedin.com/in/gkcodez"
             target="_blank"
             rel="noopener noreferrer"
@@ -158,13 +160,13 @@ export default function Home() {
               Developed by{" "}
               <span className="text-red-600 underline">@gkcodez</span>
             </p>
-          </a>
+          </a> */}
         </div>
 
         <div className="flex flex-col w-full">
-          <div className="flex items-center justify-start gap-2 flex-1 w-full p-2">
-            <div className="flex items-center justify-center gap-2">
-              <span className="font-bold">Target: </span>{" "}
+          <div className="flex items-center justify-center gap-2 flex-1 w-full p-2">
+            <div className="flex items-center justify-center gap-2 w-full">
+              <span className="font-bold flex items-center gap-2"><TargetIcon /> Target: </span>{" "}
               {!isUpdatingTarget && (
                 <div className="flex items-center gap-2">
                   <span id="currentTarget" className="text-red-600">
@@ -193,7 +195,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="favoriteDorks p-2">
+          {/* <div className="favoriteDorks p-2">
             <div className="flex items-center justify-items-center p-2 w-full gap-2">
               <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-indigo-600">
                 <FolderOpen /> Favorites  <LogOutIcon onClick={() => bulkOpenDorks(favoriteDorks)}/>
@@ -243,11 +245,11 @@ export default function Home() {
               </Card>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="allDorks p-2">
             <div className="flex items-center justify-items-center p-2 w-full">
               <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-indigo-600">
-                <FolderOpen /> All Dorks <LogOutIcon />
+                <FolderOpen /> All Dorks
               </h3>
             </div>
             <div className="flex gap-2 flex-1 w-full lg:w-1/3 p-2">
