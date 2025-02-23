@@ -1,57 +1,108 @@
 [
-  {
-    "id": 1,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of"
-  },
-  {
-    "id": 2,
-    "title": "Find config files",
-    "description": "Find config files using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": true
-  },
-  {
-    "id": 3,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": false
-  },
-  {
-    "id": 4,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": false
-  },
-  {
-    "id": 5,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": false
-  },
-  {
-    "id": 6,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": false
-  },
-  {
-    "id": 7,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": true
-  },
-  {
-    "id": 8,
-    "title": "Find directories",
-    "description": "Find directories using 'intitle:index.of'.",
-    "value": "intitle:index.of",
-    "favorite": true
-  }
+    {
+        "id": "b48209bb-38dd-4b6d-bc30-bb88d75a2a16",
+        "title": "Find AWS Cloud Storage",
+        "description": "'[TARGET]' site:s3.amazonaws.com | site:s3-external-1.amazonaws.com | site:s3.dualstack.us-east-1.amazonaws.com",
+        "value": "'[TARGET]' site:s3.amazonaws.com | site:s3-external-1.amazonaws.com | site:s3.dualstack.us-east-1.amazonaws.com",
+        "category": "Cloud Storage",
+        "createdAt": "2025-02-16T13:15:55.607Z",
+        "icon": "cloud.svg"
+    },
+    {
+        "id": "318e01e7-4815-441c-9085-1e5ce8985a47",
+        "title": "Find Confidential Documents",
+        "description": "site:[TARGET] intext:'confidential' | intext:'Not for Public Release' | intext:'internal use only' | intext:'do not distribute'",
+        "value": "site:[TARGET] intext:'confidential' | intext:'Not for Public Release' | intext:'internal use only' | intext:'do not distribute'",
+        "category": "Sensitive Files",
+        "createdAt": "2025-02-16T04:42:20.996Z",
+        "icon": "file.svg"
+    },
+    {
+        "id": "4f1cc536-395f-4229-bc1f-5fbf9626a990",
+        "title": "Find Google Cloud Storage",
+        "description": "'[TARGET]' site:googleapis.com | site:drive.google.com | site:docs.google.com inurl:'/d/'",
+        "value": "'[TARGET]' site:googleapis.com | site:drive.google.com | site:docs.google.com inurl:'/d/'",
+        "category": "Cloud Storage",
+        "createdAt": "2025-02-16T13:16:37.875Z",
+        "icon": "cloud.svg"
+    },
+    {
+        "id": "0309d87f-256d-4d01-a2cd-d41fffb8c8f8",
+        "title": "Find API Endpoints",
+        "description": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+        "value": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+        "category": "Sensitive Functionalities",
+        "createdAt": "2025-02-16T13:10:01.764Z",
+        "icon": "bulb.svg"
+    },
+    {
+        "id": "39acfd05-24fb-46bd-a1d2-530961e3bcea",
+        "title": "Find File Upload Functionality",
+        "description": "site:[TARGET] 'choose file'",
+        "value": "site:[TARGET] 'choose file'",
+        "category": "Sensitive Functionalities",
+        "createdAt": "2025-02-15T18:49:54.896Z",
+        "icon": "bulb.svg"
+    },
+    {
+        "id": "c5448ed0-4638-4042-b160-9561cfef5ae4",
+        "title": "\"Responsible Disclosure\" in URL",
+        "description": "inurl:responsible-disclosure",
+        "value": "inurl:responsible-disclosure",
+        "category": "General",
+        "createdAt": "2025-02-15T14:10:50.380Z"
+    },
+    {
+        "id": "02612d19-01a3-4e43-b08e-c6373f6f6c3e",
+        "title": "Find Sensitive Files By URL",
+        "description": "site:[TARGET] inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php",
+        "value": "site:[TARGET] inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php",
+        "category": "Sensitive Files",
+        "createdAt": "2025-02-15T18:38:07.377Z",
+        "icon": "file.svg"
+    },
+    {
+        "id": "e5b9aa8a-9afb-43c9-a539-6c8508ac8820",
+        "title": "Find Sensitive Files By Extension",
+        "description": "site:[TARGET] ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+        "value": "site:[TARGET] ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+        "category": "Sensitive Files",
+        "createdAt": "2025-02-15T18:35:49.138Z",
+        "icon": "file.svg"
+    },
+    {
+        "id": "b7893d8e-d658-4c10-8242-3c8f8b1d4d12",
+        "title": "\"Security\" in URL",
+        "description": "inurl:security",
+        "value": "inurl:security",
+        "category": "General",
+        "createdAt": "2025-02-15T15:26:05.083Z"
+    },
+    {
+        "id": "651854ec-eeca-4dda-b7c5-dacc0d62b8b5",
+        "title": "Find Login Functionality",
+        "description": "site:[TARGET] inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:secure",
+        "value": "site:[TARGET] inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:secure",
+        "category": "Sensitive Functionalities",
+        "createdAt": "2025-02-15T18:50:23.859Z",
+        "icon": "bulb.svg"
+    },
+    {
+        "id": "cb1bb74f-6e0a-4848-a642-84da7e16f60d",
+        "title": "Find Environments",
+        "description": "site:[TARGET] inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo",
+        "value": "site:[TARGET] inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo",
+        "category": "Sensitive Functionalities",
+        "createdAt": "2025-02-16T13:11:18.135Z",
+        "icon": "bulb.svg"
+    },
+    {
+        "id": "f7bc941d-a7ff-4ddc-b5f9-0a51bb4ea8ec",
+        "title": "Find Vulnerable Parameters",
+        "description": "site:[TARGET] inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http",
+        "value": "site:[TARGET] inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http",
+        "category": "Sensitive Functionalities",
+        "createdAt": "2025-02-16T13:13:39.620Z",
+        "icon": "bulb.svg"
+    }
 ]

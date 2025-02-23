@@ -44,10 +44,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Dork } from "@/models/dork";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
-  const [favoriteDorks, setFavoriteDorks] = useState<Dork[]>([]);
+  const [generalDorks, setGeneralDorks] = useState<Dork[]>([]);
   const [target, setTarget] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [isUpdatingTarget, setIsUpdatingTarget] = useState<boolean>(false);
@@ -77,23 +78,24 @@ export default function Home() {
     if (localTarget) {
       setTarget(localTarget);
     }
+    fetchGeneralDorks();
     fetchDorks();
   }, []); // Runs once when component mounts.
 
   const fetchDorks = async () => {
-    try {
-      const response = await fetch("/api/dorks"); // Adjust API URL if needed
-      if (!response.ok) {
-        throw new Error("Failed to fetch dorks");
-      }
-      const allDorks = await response.json();
-      setDorks(allDorks);
-      setFavoriteDorks(
-        allDorks.filter((x: { favorite: boolean }) => x.favorite)
-      );
-    } catch (error) {
-      console.error("Error fetching dorks:", error);
-    }
+    fetch("/data/dorks.json")
+      .then((res) => res.json())
+      .then((data) => data.filter((dork: Dork) => (dork.category !== "General")))
+      .then((data) => setDorks(data))
+      .catch((error) => console.error("Error loading cards:", error));
+  };
+
+  const fetchGeneralDorks = async () => {
+    fetch("/data/dorks.json")
+      .then((res) => res.json())
+      .then((data) => data.filter((dork: Dork) => (dork.category === "General")))
+      .then((data) => setGeneralDorks(data))
+      .catch((error) => console.error("Error loading cards:", error));
   };
 
   const searchDorks = async () => {
@@ -112,9 +114,6 @@ export default function Home() {
   function googleSearch(dork: Dork) {
     let searchTerm = dork.value;
     searchTerm = searchTerm.replaceAll("[TARGET]", target);
-    // if (target && dork.category != "Bug Bounty Programs") {
-    //   searchTerm = `site: ${target} ${searchTerm}`;
-    // }
     const baseUrl = "https://www.google.com";
     const url = `${baseUrl}/search?q=${encodeURIComponent(searchTerm)}`;
     window.open(url, `${dork.title}`);
@@ -173,20 +172,20 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full px-2">
+    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full px-2 py-5">
       {/* <Image
-        src="/target.svg" // Replace with your image
+        src="/images/target.svg" // Replace with your image
         alt="Target Image"
         width={300}
         height={300}
         className="rounded-lg"
       /> */}
-      <div className="flex flex-col items-center justify-items-center gap-2 w-full my-5">
+      <div className="flex flex-col items-center justify-items-center gap-5 w-full">
         <div className="flex flex-col gap-2 text-center">
           <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-indigo-600">
             Dorkmine
           </h1>
-          {/* <a
+          <a
             href="http://linkedin.com/in/gkcodez"
             target="_blank"
             rel="noopener noreferrer"
@@ -195,215 +194,225 @@ export default function Home() {
               Developed by{" "}
               <span className="text-red-600 underline">@gkcodez</span>
             </p>
-          </a> */}
+          </a>
         </div>
-
-        <div className="flex flex-col w-full">
-          <div className="flex items-center justify-center gap-2 flex-1 w-full p-2">
-            <div className="flex items-center justify-center gap-2 w-full">
-              <span className="font-bold flex items-center gap-2">
-                <TargetIcon /> Target:{" "}
-              </span>{" "}
-              {!isUpdatingTarget && (
-                <div className="flex items-center gap-2">
-                  <span id="currentTarget" className="text-red-600">
-                    {target}
-                  </span>
-                  <Edit onClick={handleEditButtonClick} />
-                </div>
-              )}
-              {isUpdatingTarget && (
-                <div className="flex items-center gap-2">
-                  <form
-                    onSubmit={handleTargetSubmit}
-                    className="flex items-center gap-2"
-                  >
-                    <Input
-                      value={target}
-                      onChange={handleTargetChange}
-                      placeholder="Enter your target domain"
-                    />
-                    <Button variant="ghost" type="submit">
-                      <Save />
-                    </Button>
-                  </form>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* <div className="favoriteDorks p-2">
-            <div className="flex items-center justify-items-center p-2 w-full gap-2">
-              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-indigo-600">
-                <FolderOpen /> Favorites  <LogOutIcon onClick={() => bulkOpenDorks(favoriteDorks)}/>
-              </h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
-              {favoriteDorks.map((dork, index) => (
-                <Card
-                key={index}
-                className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
+        <div className="flex items-center gap-3">
+          <Popover>
+            <PopoverTrigger>
+              <SortDescIcon className="font-bold text-2xl" />
+            </PopoverTrigger>
+            <PopoverContent>
+              <form
+                onSubmit={handleSearchSubmit}
+                className="flex flex-col items-center gap-2 w-full"
               >
-                <div className="flex flex-col justify-start">
-                <div className="w-full flex items-start justify-between">
-                  <CardHeader
-                    className="text-md w-full flex items-start justify-between"
-                    onClick={() => googleSearch(dork)}
-                  >
-                    <CardTitle>{dork.title}</CardTitle>
-                  </CardHeader>
-                  <HeartIcon
-                    onClick={() => toggleFavorite(dork.id)}
-                    className={`${dork.favorite ? "fill-red-600 text-red-700" : ""} relative top-2 right-2`}
+                <div className="w-full flex flex-col gap-2">
+                  <h3 className="flex items-center justify-start gap-2 font-semibold">
+                    <SortAscIcon /> Sort
+                  </h3>
+                  <hr />
+                  <div className="flex items-center justify-start gap-2">
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Sort By" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="title">Title</SelectItem>
+                        <SelectItem value="created_date">
+                          Created Date
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Sort Direction" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="asc">Ascending</SelectItem>
+                        <SelectItem value="desc">Descending</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <div className="w-full flex items-center justify-end">
+                  <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                    <SortAscIcon /> Sort
+                  </Button>
+                </div>
+              </form>
+            </PopoverContent>
+          </Popover>
+          <Popover>
+            <PopoverTrigger>
+              <FilterIcon className="font-bold text-2xl" />
+            </PopoverTrigger>
+            <PopoverContent>
+              <form
+                onSubmit={handleFilterSubmit}
+                className="flex flex-col items-center gap-2 w-full"
+              >
+                <div className="w-full flex flex-col gap-2">
+                  <h3 className="flex items-center justify-start gap-2 font-semibold">
+                    <FilterIcon /> Filter
+                  </h3>
+                  <hr />
+                  <p className="font-semibold">Categories</p>
+                  {options.map(({ label, value }) => (
+                    <label
+                      key={value}
+                      className="flex items-center gap-2 text-sm"
+                    >
+                      <Checkbox
+                        checked={selectedOptions.includes(value)}
+                        onCheckedChange={() =>
+                          handleCheckboxChange(value)
+                        }
+                      />
+                      {label}
+                    </label>
+                  ))}
+                </div>
+                <div className="w-full flex items-center justify-end">
+                  <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                    <FilterIcon /> Filter
+                  </Button>
+                </div>
+              </form>
+            </PopoverContent>
+          </Popover>
+          <Popover>
+            <PopoverTrigger>
+              <SearchIcon className="font-bold text-2xl" />
+            </PopoverTrigger>
+            <PopoverContent>
+              <form
+                onSubmit={handleSearchSubmit}
+                className="flex flex-col items-start gap-2 w-full"
+              >
+                <div className="w-full flex flex-col gap-2">
+                  <h3 className="flex items-center justify-start gap-2 font-semibold">
+                    <SearchIcon /> Search
+                  </h3>
+                  <hr />
+                  <Input
+                    value={search}
+                    onChange={handleSearchChange}
+                    placeholder="Search dorks by title"
                   />
                 </div>
-
-                <CardContent onClick={() => googleSearch(dork)}>
-                  <p className="text-sm text-gray-600">{dork.description}</p>
-                </CardContent>
+                <div className="w-full flex items-center justify-end">
+                  <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
+                    <SearchIcon /> Search
+                  </Button>
                 </div>
-                <CardFooter
-                  className="flex items-center justify-between w-full"
-                  onClick={() => googleSearch(dork)}
+              </form>
+            </PopoverContent>
+          </Popover>
+        </div>
+        <div className="flex flex-col w-full">
+          <div className="generalDorks p-2">
+            <div className="flex items-center justify-start p-2 w-full">
+              <h3 className="flex items-center gap-2 text-left font-bold tracking-tight text-xl text-indigo-600 w-full">
+                <FolderOpen /> General Dorks
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
+              {generalDorks.map((dork, index) => (
+                <Card
+                  key={index}
+                  className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
                 >
-                  <div className="flex items-center text-xs text-gray-400 gap-1">
-                    <Folder />
-                    <p>{dork.category}</p>
+                  <div className="flex flex-col justify-start">
+                    <div className="w-full flex items-start justify-between">
+                      <CardHeader
+                        className="text-md w-full flex items-start justify-between"
+                        onClick={() => googleSearch(dork)}
+                      >
+                        <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
+                          <Image
+                            src={`/images/icons/${dork.icon ?? 'search.svg'}`} // Replace with your image
+                            alt="dork-icon"
+                            width={50}
+                            height={50}
+                            className="rounded-lg"
+                          /> {dork.title}</CardTitle>
+                      </CardHeader>
+                      {/* <HeartIcon
+                        onClick={() => toggleFavorite(dork.id)}
+                        className={`${
+                          dork.favorite ? "fill-red-600 text-red-700" : ""
+                        } relative top-2 right-2`}
+                      /> */}
+                    </div>
+
+                    {/* <CardContent onClick={() => googleSearch(dork)}>
+                      <p className="text-sm text-gray-600">
+                        {dork.description}
+                      </p>
+                    </CardContent> */}
                   </div>
-                  <div className="flex items-center text-xs text-gray-400 gap-1">
-                    <Calendar />
-                    <p>
-                      {dork.createdAt
-                        ? format(dork.createdAt, "dd/MM/yyyy")
-                        : ""}
-                    </p>
-                  </div>
-                </CardFooter>
-              </Card>
+                  <CardFooter
+                    className="flex items-center justify-between w-full"
+                    onClick={() => googleSearch(dork)}
+                  >
+                    <div className="flex items-center text-xs text-gray-400 gap-1">
+                      <Folder />
+                      <p>{dork.category}</p>
+                    </div>
+                    <div className="flex items-center text-xs text-gray-400 gap-1">
+                      <Calendar />
+                      <p>
+                        {dork.createdAt
+                          ? format(dork.createdAt, "dd/MM/yyyy")
+                          : ""}
+                      </p>
+                    </div>
+                  </CardFooter>
+                </Card>
               ))}
             </div>
-          </div> */}
+          </div>
           <div className="allDorks p-2">
             <div className="flex items-center justify-start p-2 w-full">
-              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight lg:text-2xl text-indigo-600 w-full">
-                <FolderOpen /> All Dorks
+              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight text-indigo-600 w-full">
+                <FolderOpen /> Target Dorks
               </h3>
-              <div className="flex items-center gap-3">
-                <Popover>
-                  <PopoverTrigger>
-                    <SortDescIcon className="font-bold text-2xl" />
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <form
-                      onSubmit={handleSearchSubmit}
-                      className="flex flex-col items-center gap-2 w-full"
-                    >
-                      <div className="w-full flex flex-col gap-2">
-                        <h3 className="flex items-center justify-start gap-2 font-semibold">
-                          <SortAscIcon /> Sort
-                        </h3>
-                        <hr />
-                        <div className="flex items-center justify-start gap-2">
-                          <Select>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sort By" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="title">Title</SelectItem>
-                              <SelectItem value="created_date">
-                                Created Date
-                              </SelectItem>
-                            </SelectContent>
-                          </Select>
 
-                          <Select>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Sort Direction" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="asc">Ascending</SelectItem>
-                              <SelectItem value="desc">Descending</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div>
-                      </div>
-                      <div className="w-full flex items-center justify-end">
-                        <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                          <SortAscIcon /> Sort
-                        </Button>
-                      </div>
-                    </form>
-                  </PopoverContent>
-                </Popover>
-                <Popover>
-                  <PopoverTrigger>
-                    <FilterIcon className="font-bold text-2xl" />
-                  </PopoverTrigger>
-                  <PopoverContent>
+            </div>
+            <div className="flex items-center justify-start gap-2 flex-1 w-full p-2">
+              <div className="flex items-center justify-start gap-2 w-full">
+                <span className="font-bold flex items-center gap-2">
+                  <TargetIcon /> Target:{" "}
+                </span>{" "}
+                {!isUpdatingTarget && (
+                  <div className="flex items-center gap-2">
+                    <span id="currentTarget" className="text-red-600">
+                      {target}
+                    </span>
+                    <Edit onClick={handleEditButtonClick} />
+                  </div>
+                )}
+                {isUpdatingTarget && (
+                  <div className="flex items-center gap-2">
                     <form
-                      onSubmit={handleFilterSubmit}
-                      className="flex flex-col items-center gap-2 w-full"
+                      onSubmit={handleTargetSubmit}
+                      className="flex items-center gap-2"
                     >
-                      <div className="w-full flex flex-col gap-2">
-                        <h3 className="flex items-center justify-start gap-2 font-semibold">
-                          <FilterIcon /> Filter
-                        </h3>
-                        <hr />
-                        <p className="font-semibold">Categories</p>
-                        {options.map(({ label, value }) => (
-                          <label
-                            key={value}
-                            className="flex items-center gap-2 text-sm"
-                          >
-                            <Checkbox
-                              checked={selectedOptions.includes(value)}
-                              onCheckedChange={() =>
-                                handleCheckboxChange(value)
-                              }
-                            />
-                            {label}
-                          </label>
-                        ))}
-                      </div>
-                      <div className="w-full flex items-center justify-end">
-                        <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                          <FilterIcon /> Filter
-                        </Button>
-                      </div>
+                      <Input
+                        value={target}
+                        onChange={handleTargetChange}
+                        placeholder="Enter your target domain"
+                      />
+                      <Button variant="ghost" type="submit">
+                        <Save />
+                      </Button>
                     </form>
-                  </PopoverContent>
-                </Popover>
-                <Popover>
-                  <PopoverTrigger>
-                    <SearchIcon className="font-bold text-2xl" />
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <form
-                      onSubmit={handleSearchSubmit}
-                      className="flex flex-col items-start gap-2 w-full"
-                    >
-                      <div className="w-full flex flex-col gap-2">
-                        <h3 className="flex items-center justify-start gap-2 font-semibold">
-                          <SearchIcon /> Search
-                        </h3>
-                        <hr />
-                        <Input
-                          value={search}
-                          onChange={handleSearchChange}
-                          placeholder="Search dorks by title"
-                        />
-                      </div>
-                      <div className="w-full flex items-center justify-end">
-                        <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                          <SearchIcon /> Search
-                        </Button>
-                      </div>
-                    </form>
-                  </PopoverContent>
-                </Popover>
+                  </div>
+                )}
               </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
               {dorks.map((dork, index) => (
                 <Card
@@ -416,21 +425,28 @@ export default function Home() {
                         className="text-md w-full flex items-start justify-between"
                         onClick={() => googleSearch(dork)}
                       >
-                        <CardTitle>{dork.title}</CardTitle>
+                        <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
+                          <Image
+                            src={`/images/icons/${dork.icon ?? 'dork.svg'}`} // Replace with your image
+                            alt="dork-icon"
+                            width={50}
+                            height={50}
+                            className="rounded-lg"
+                          /> {dork.title}</CardTitle>
                       </CardHeader>
-                      <HeartIcon
+                      {/* <HeartIcon
                         onClick={() => toggleFavorite(dork.id)}
                         className={`${
                           dork.favorite ? "fill-red-600 text-red-700" : ""
                         } relative top-2 right-2`}
-                      />
+                      /> */}
                     </div>
 
-                    <CardContent onClick={() => googleSearch(dork)}>
+                    {/* <CardContent onClick={() => googleSearch(dork)}>
                       <p className="text-sm text-gray-600">
                         {dork.description}
                       </p>
-                    </CardContent>
+                    </CardContent> */}
                   </div>
                   <CardFooter
                     className="flex items-center justify-between w-full"

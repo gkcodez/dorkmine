@@ -1,4 +1,4 @@
-interface Dork {
+export interface Dork {
     id?: string;
     title: string;
     description?: string;
@@ -7,4 +7,5 @@ interface Dork {
     category?: string;
     favorite: boolean;
     createdAt?: Date
+    icon: string;
 }
