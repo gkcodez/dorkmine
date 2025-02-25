@@ -156,27 +156,29 @@ export default function Home() {
       <div className="flex flex-col items-center justify-items-center w-full">
         <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-600 p-2">
           <div className="p-2">
-            <div className="flex items-start justify-center">
-          <h1 className="flex items-center text-4xl font-bold tracking-wide text-white p-2">
-          
-          D<SearchCheckIcon className="text-amber-300 font-bold w-10 h-10" />rkmine
-          </h1>
-          {/* <p className="text-lg font-bold text-cyan-600">v1.0.0</p> */}
-          </div>
-          <a
-            href="http://linkedin.com/in/gkcodez"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <p className="text-white">
-              Developed by{" "}
-              <span className="text-amber-300 underline">@gkcodez</span>
-            </p>
-          </a>
+            <div className="flex items-start justify-center text-white ">
+              <h1 className="flex items-center text-4xl font-bold tracking-wide p-1">
+
+                D<SearchCheckIcon className="text-amber-300 font-bold w-10 h-10" />rkmine
+              </h1>
+              1.0.0 
+              {/* <p className="text-lg font-bold text-cyan-600">v1.0.0</p> */}
+            </div>
+            <a
+              href="http://linkedin.com/in/gkcodez"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex flex-col items-center justify-center gap-1 text-white">
+                <p>
+                  Developed by: <span className="text-amber-300 underline">@gkcodez</span>
+                </p>
+              </div>
+            </a>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 p-3 shadow-md">
-        <form
+        <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md">
+          <form
             onSubmit={handleSearchSubmit}
             className="flex flex items-start gap-2 w-full md:w-1/2"
           >
@@ -191,6 +193,9 @@ export default function Home() {
             </div>
             {/* <Button><SearchIcon/></Button> */}
           </form>
+          {dorks?.length > 0 && <p className="flex items-center justify-center gap-2">
+                  <SearchIcon /> Total Dorks: {dorks?.length} <FilterIcon /> Filtered Dorks: {filteredDorks?.length}
+                </p>}
           {/* <Popover>
             <PopoverTrigger>
               <SortDescIcon className="font-bold text-2xl" />
@@ -275,7 +280,7 @@ export default function Home() {
               </form>
             </PopoverContent>
           </Popover> */}
-          
+
         </div>
         <div className="flex flex-col w-full">
           <div className="generalDorks p-2">
