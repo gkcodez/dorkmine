@@ -172,7 +172,7 @@ export default function Home() {
           </a>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-3 w-full bg-cyan-100 sticky top-0 p-5">
+        <div className="flex items-center justify-center gap-3 w-full sticky top-0 bg-cyan-100 p-3 shadow-md">
         <form
             onSubmit={handleSearchSubmit}
             className="flex flex items-start gap-2 w-full md:w-1/2"
@@ -182,7 +182,7 @@ export default function Home() {
                 value={search}
                 onChange={handleSearchChange}
                 placeholder="Search dorks..."
-                className="pl-10 bg-white text-gray-600"
+                className="text-gray-600 pl-10 pr-5 py-5 bg-white rounded-lg shadow-sm w-full"
               />
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
             </div>
