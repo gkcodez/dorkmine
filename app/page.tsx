@@ -175,10 +175,10 @@ export default function Home() {
             dorks?.length > 0 &&
             <div className="flex md:flex-row items-start justify-center gap-2">
               <p className="flex items-center justify-center gap-2">
-                <SearchIcon/> Total Dorks: {dorks?.length}
+                <SearchIcon /> Total Dorks: {dorks?.length}
               </p>
               <p className="flex items-center justify-center gap-2">
-                <FilterIcon/> Filtered Dorks: {filteredDorks.length}
+                <FilterIcon /> Filtered Dorks: {filteredDorks.length}
               </p>
             </div>
 
@@ -191,14 +191,16 @@ export default function Home() {
             <div className="flex items-center justify-start gap-2 flex-1 w-full p-2">
               <div className="flex items-center justify-start gap-2 w-full">
                 <span className="font-bold flex items-center gap-2">
-                  <TargetIcon /> Target:{" "}
+                  Target:{" "}
                 </span>{" "}
                 {!isUpdatingTarget && (
                   <div className="flex items-center gap-2">
                     <span id="currentTarget" className="text-amber-600">
                       {target}
                     </span>
-                    <Edit onClick={handleEditButtonClick} />
+                    <Button variant="ghost" type="button" onClick={handleEditButtonClick}>
+                      <Edit />
+                    </Button>
                   </div>
                 )}
                 {isUpdatingTarget && (
