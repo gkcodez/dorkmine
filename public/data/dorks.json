@@ -1,108 +1,570 @@
 [
     {
-        "id": "b48209bb-38dd-4b6d-bc30-bb88d75a2a16",
-        "title": "Find AWS Cloud Storage",
-        "description": "'[TARGET]' site:s3.amazonaws.com | site:s3-external-1.amazonaws.com | site:s3.dualstack.us-east-1.amazonaws.com",
-        "value": "'[TARGET]' site:s3.amazonaws.com | site:s3-external-1.amazonaws.com | site:s3.dualstack.us-east-1.amazonaws.com",
-        "category": "Cloud Storage",
-        "createdAt": "2025-02-16T13:15:55.607Z",
+        "id": 1,
+        "title": "SQL Error Messages",
+        "description": "Locates websites with SQL error messages.",
+        "content": "site:[TARGET] intext:\"SQL syntax near\" | intext:\"syntax error has occurred\"",
+        "category": "Error Messages",
+        "icon": "error.svg"
+    },
+    {
+        "id": 2,
+        "title": "Exposed Database Files",
+        "description": "Finds publicly accessible database files.",
+        "content": "site:[TARGET] ext:sql | ext:db | ext:mdb",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 3,
+        "title": "Log Files",
+        "description": "Identifies exposed log files that may contain sensitive information.",
+        "content": "site:[TARGET] ext:log intext:\"password\" | intext:\"username\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 4,
+        "title": "Admin Login Pages",
+        "description": "Finds admin login portals for a target site.",
+        "content": "site:[TARGET] inurl:admin | inurl:login | inurl:administrator",
+        "category": "Sensitive Functionalities",
+        "icon": "critical.svg"
+    },
+    {
+        "id": 5,
+        "title": "Exposed Backup Files",
+        "description": "Finds publicly accessible backup files.",
+        "content": "site:[TARGET] ext:bak | ext:old | ext:backup",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 6,
+        "title": "Open Directory Listings",
+        "description": "Identifies directories with file listings enabled.",
+        "content": "site:[TARGET] intitle:\"index of\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+    },
+    {
+        "id": 7,
+        "title": "Publicly Exposed Git Repositories",
+        "description": "Finds exposed .git directories which may contain sensitive source code.",
+        "content": "site:[TARGET] inurl:\"/.git\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+    },
+    {
+        "id": 8,
+        "title": "Configuration Files",
+        "description": "Finds exposed configuration files that may contain credentials.",
+        "content": "site:[TARGET] ext:ini | ext:cfg | ext:env",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 9,
+        "title": "PHP Info Pages",
+        "description": "Finds phpinfo() pages which disclose server configuration details.",
+        "content": "site:[TARGET] inurl:\"phpinfo.php\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+    },
+    {
+        "id": 10,
+        "title": "Exposed WordPress Configuration",
+        "description": "Finds exposed wp-config.php files that may contain database credentials.",
+        "content": "site:[TARGET] inurl:\"wp-config.php\" -intext:\"<?php\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 11,
+        "title": "Backup WordPress Files",
+        "description": "Finds backup WordPress configuration files.",
+        "content": "site:[TARGET] inurl:\"wp-config.php.bak\" | inurl:\"wp-config.php.old\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 12,
+        "title": "Exposed Environment Files",
+        "description": "Finds exposed .env files which may contain API keys and credentials.",
+        "content": "site:[TARGET] inurl:\".env\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 13,
+        "title": "Git Configuration Files",
+        "description": "Finds exposed git configuration files.",
+        "content": "site:[TARGET] inurl:\".git/config\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 14,
+        "title": "Exposed SSH Private Keys",
+        "description": "Finds private SSH keys that should not be publicly accessible.",
+        "content": "site:[TARGET] ext:txt | ext:key intext:\"BEGIN RSA PRIVATE KEY\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 15,
+        "title": "Exposed htpasswd Files",
+        "description": "Finds exposed .htpasswd files that may contain password hashes.",
+        "content": "site:[TARGET] inurl:\".htpasswd\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 16,
+        "title": "Exposed htaccess Files",
+        "description": "Finds exposed .htaccess files which may reveal sensitive server configurations.",
+        "content": "site:[TARGET] inurl:\".htaccess\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 17,
+        "title": "Joomla Configuration Files",
+        "description": "Finds Joomla configuration files containing database credentials.",
+        "content": "site:[TARGET] inurl:\"configuration.php-dist\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 18,
+        "title": "Drupal Settings Files",
+        "description": "Finds Drupal settings.php files which may contain database credentials.",
+        "content": "site:[TARGET] inurl:\"settings.php\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 19,
+        "title": "Open Cameras",
+        "description": "Finds publicly accessible security cameras.",
+        "content": "site:[TARGET] inurl:\"view/view.shtml\"",
+        "category": "Sensitive Functionalities",
+        "icon": "critical.svg"
+    },
+    {
+        "id": 20,
+        "title": "Exposed API Keys",
+        "description": "Finds exposed API keys in JavaScript files.",
+        "content": "site:[TARGET] ext:js intext:\"api_key\" | intext:\"apiToken\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+    },
+    {
+        "id": 21,
+        "title": "Publicly Accessible Apache Server Status",
+        "description": "Finds publicly accessible Apache server-status pages.",
+        "content": "site:[TARGET] inurl:\"server-status\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 22,
+        "title": "Exposed WebShells",
+        "description": "Finds potentially uploaded webshells.",
+        "content": "site:[TARGET] inurl:\"cmd.php\" | inurl:\"shell.php\" | inurl:\"backdoor\"",
+        "category": "Remote Code Execution",
+        "icon": "danger.svg"
+      },
+      {
+        "id": 23,
+        "title": "Exposed Firewall Configuration Files",
+        "description": "Finds publicly available firewall configuration files.",
+        "content": "site:[TARGET] ext:conf intext:\"firewall\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 24,
+        "title": "Open Jenkins Dashboards",
+        "description": "Finds exposed Jenkins CI/CD dashboards.",
+        "content": "site:[TARGET] inurl:\"/jenkins\"",
+        "category": "Sensitive Functionalities",
+        "icon": "critical.svg"
+      },
+      {
+        "id": 25,
+        "title": "Open Kibana Dashboards",
+        "description": "Finds exposed Kibana dashboards that might reveal sensitive logs.",
+        "content": "site:[TARGET] inurl:\"/app/kibana\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 26,
+        "title": "Exposed AWS Credentials",
+        "description": "Finds leaked AWS access keys in publicly accessible pages.",
+        "content": "site:[TARGET] intext:\"AWS_ACCESS_KEY_ID\" | intext:\"AWS_SECRET_ACCESS_KEY\"",
+        "category": "Cloud Security",
         "icon": "cloud.svg"
-    },
-    {
-        "id": "318e01e7-4815-441c-9085-1e5ce8985a47",
-        "title": "Find Confidential Documents",
-        "description": "site:[TARGET] intext:'confidential' | intext:'Not for Public Release' | intext:'internal use only' | intext:'do not distribute'",
-        "value": "site:[TARGET] intext:'confidential' | intext:'Not for Public Release' | intext:'internal use only' | intext:'do not distribute'",
-        "category": "Sensitive Files",
-        "createdAt": "2025-02-16T04:42:20.996Z",
-        "icon": "file.svg"
-    },
-    {
-        "id": "4f1cc536-395f-4229-bc1f-5fbf9626a990",
-        "title": "Find Google Cloud Storage",
-        "description": "'[TARGET]' site:googleapis.com | site:drive.google.com | site:docs.google.com inurl:'/d/'",
-        "value": "'[TARGET]' site:googleapis.com | site:drive.google.com | site:docs.google.com inurl:'/d/'",
-        "category": "Cloud Storage",
-        "createdAt": "2025-02-16T13:16:37.875Z",
+      },
+      {
+        "id": 27,
+        "title": "Publicly Accessible Google Drive Links",
+        "description": "Finds publicly shared Google Drive links.",
+        "content": "site:drive.google.com [TARGET]",
+        "category": "Cloud Security",
         "icon": "cloud.svg"
-    },
-    {
-        "id": "0309d87f-256d-4d01-a2cd-d41fffb8c8f8",
-        "title": "Find API Endpoints",
-        "description": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
-        "value": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+      },
+      {
+        "id": 28,
+        "title": "Open FTP Servers",
+        "description": "Finds publicly accessible FTP servers.",
+        "content": "site:[TARGET] inurl:\"ftp://\"",
         "category": "Sensitive Functionalities",
-        "createdAt": "2025-02-16T13:10:01.764Z",
-        "icon": "bulb.svg"
-    },
-    {
-        "id": "39acfd05-24fb-46bd-a1d2-530961e3bcea",
-        "title": "Find File Upload Functionality",
-        "description": "site:[TARGET] 'choose file'",
-        "value": "site:[TARGET] 'choose file'",
-        "category": "Sensitive Functionalities",
-        "createdAt": "2025-02-15T18:49:54.896Z",
-        "icon": "bulb.svg"
-    },
-    {
-        "id": "c5448ed0-4638-4042-b160-9561cfef5ae4",
-        "title": "\"Responsible Disclosure\" in URL",
-        "description": "inurl:responsible-disclosure",
-        "value": "inurl:responsible-disclosure",
-        "category": "General",
-        "createdAt": "2025-02-15T14:10:50.380Z"
-    },
-    {
-        "id": "02612d19-01a3-4e43-b08e-c6373f6f6c3e",
-        "title": "Find Sensitive Files By URL",
-        "description": "site:[TARGET] inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php",
-        "value": "site:[TARGET] inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php",
+        "icon": "critical.svg"
+      },
+      {
+        "id": 29,
+        "title": "Exposed Email Lists",
+        "description": "Finds pages containing leaked email lists.",
+        "content": "site:[TARGET] intext:\"@gmail.com\" | intext:\"@yahoo.com\" | intext:\"@outlook.com\"",
+        "category": "Privacy Leaks",
+        "icon": "privacy.svg"
+      },
+      {
+        "id": 30,
+        "title": "Exposed Payment Data",
+        "description": "Finds publicly available payment-related information.",
+        "content": "site:[TARGET] intext:\"credit card number\" | intext:\"cvv\"",
+        "category": "Financial Data Exposure",
+        "icon": "money.svg"
+      },
+      {
+        "id": 31,
+        "title": "Unsecured Google Calendar Events",
+        "description": "Finds public Google Calendar events that may contain sensitive details.",
+        "content": "site:calendar.google.com [TARGET]",
+        "category": "Privacy Leaks",
+        "icon": "privacy.svg"
+      },
+      {
+        "id": 32,
+        "title": "Open Trello Boards",
+        "description": "Finds exposed Trello boards that may contain company data.",
+        "content": "site:trello.com [TARGET]",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 33,
+        "title": "Publicly Available Zoom Meeting Links",
+        "description": "Finds exposed Zoom meeting links.",
+        "content": "site:zoom.us [TARGET] inurl:\"/j/\"",
+        "category": "Privacy Leaks",
+        "icon": "privacy.svg"
+      },
+      {
+        "id": 34,
+        "title": "Publicly Available WebEx Meetings",
+        "description": "Finds exposed Cisco WebEx meeting links.",
+        "content": "site:webex.com [TARGET] inurl:\"/meet\"",
+        "category": "Privacy Leaks",
+        "icon": "privacy.svg"
+      },
+      {
+        "id": 35,
+        "title": "Exposed Error Logs",
+        "description": "Finds publicly accessible error logs that may reveal sensitive data.",
+        "content": "site:[TARGET] inurl:\"error.log\" | inurl:\"debug.log\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 36,
+        "title": "Exposed DNS Configuration",
+        "description": "Finds DNS zone files that might expose domain information.",
+        "content": "site:[TARGET] inurl:\"/named.conf\" | inurl:\"/zone\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 37,
+        "title": "Exposed SSL/TLS Private Keys",
+        "description": "Finds leaked private keys for SSL/TLS encryption.",
+        "content": "site:[TARGET] ext:key intext:\"BEGIN PRIVATE KEY\"",
+        "category": "Cryptography",
+        "icon": "lock.svg"
+      },
+      {
+        "id": 38,
+        "title": "Exposed WordPress Debug Logs",
+        "description": "Finds exposed debug.log files that might reveal sensitive WordPress information.",
+        "content": "site:[TARGET] inurl:\"/wp-content/debug.log\"",
         "category": "Sensitive Files",
-        "createdAt": "2025-02-15T18:38:07.377Z",
         "icon": "file.svg"
-    },
-    {
-        "id": "e5b9aa8a-9afb-43c9-a539-6c8508ac8820",
-        "title": "Find Sensitive Files By Extension",
-        "description": "site:[TARGET] ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
-        "value": "site:[TARGET] ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+      },
+      {
+        "id": 39,
+        "title": "Publicly Accessible phpMyAdmin Portals",
+        "description": "Finds open phpMyAdmin login pages.",
+        "content": "site:[TARGET] inurl:\"phpmyadmin\"",
+        "category": "Sensitive Functionalities",
+        "icon": "critical.svg"
+      },
+      {
+        "id": 40,
+        "title": "Exposed Internal Network Devices",
+        "description": "Finds internal routers, switches, and cameras exposed to the internet.",
+        "content": "site:[TARGET] inurl:\"/setup.cgi\" | inurl:\"/status.cgi\"",
+        "category": "Network Exposure",
+        "icon": "network.svg"
+      },
+      {
+        "id": 41,
+        "title": "Exposed Jenkins Console Output",
+        "description": "Finds publicly accessible Jenkins build logs that may contain sensitive information.",
+        "content": "site:[TARGET] inurl:\"/job/\" inurl:\"/console\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 42,
+        "title": "Exposed Docker Registries",
+        "description": "Finds open Docker registries that may allow pulling of private images.",
+        "content": "site:[TARGET] inurl:\"v2/_catalog\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 43,
+        "title": "Publicly Accessible SonarQube Dashboards",
+        "description": "Finds open SonarQube dashboards that may expose security vulnerabilities.",
+        "content": "site:[TARGET] inurl:\"/sonarqube\" | inurl:\"/dashboard?id=\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 44,
+        "title": "Exposed Firebase Databases",
+        "description": "Finds publicly accessible Firebase database instances.",
+        "content": "site:[TARGET] inurl:\"firebaseio.com\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 45,
+        "title": "Publicly Exposed Payment Gateway Logs",
+        "description": "Finds payment gateway logs that may contain transaction data.",
+        "content": "site:[TARGET] ext:log intext:\"payment\" | intext:\"transaction\"",
+        "category": "Financial Data Exposure",
+        "icon": "money.svg"
+      },
+      {
+        "id": 46,
+        "title": "Exposed VPN Configuration Files",
+        "description": "Finds VPN configuration files that may contain sensitive credentials.",
+        "content": "site:[TARGET] ext:conf intext:\"vpn\"",
+        "category": "Network Exposure",
+        "icon": "network.svg"
+      },
+      {
+        "id": 47,
+        "title": "Publicly Accessible NoSQL Databases",
+        "description": "Finds open NoSQL databases such as MongoDB, CouchDB, or Elasticsearch.",
+        "content": "site:[TARGET] inurl:\"_all_dbs\" | inurl:\"_cat/indices\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 48,
+        "title": "Exposed AI Models and ML Training Data",
+        "description": "Finds publicly accessible machine learning models and datasets.",
+        "content": "site:[TARGET] inurl:\"/model\" | inurl:\"/dataset\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 49,
+        "title": "Publicly Accessible ERP/CRM Dashboards",
+        "description": "Finds open ERP or CRM platforms that may expose business data.",
+        "content": "site:[TARGET] inurl:\"/sap\" | inurl:\"/crm\" | inurl:\"/erp\"",
+        "category": "Sensitive Functionalities",
+        "icon": "critical.svg"
+      },
+      {
+        "id": 50,
+        "title": "Exposed Remote Desktop Login Pages",
+        "description": "Finds exposed RDP login portals.",
+        "content": "site:[TARGET] inurl:\"/rdweb\" | inurl:\"/remote\"",
+        "category": "Sensitive Functionalities",
+        "icon": "critical.svg"
+      },
+      {
+        "id": 51,
+        "title": "Exposed SVN Repository",
+        "description": "Finds publicly accessible Subversion (SVN) repositories containing source code.",
+        "content": "site:[TARGET] inurl:\"/.svn/entries\"",
         "category": "Sensitive Files",
-        "createdAt": "2025-02-15T18:35:49.138Z",
         "icon": "file.svg"
-    },
-    {
-        "id": "b7893d8e-d658-4c10-8242-3c8f8b1d4d12",
-        "title": "\"Security\" in URL",
-        "description": "inurl:security",
-        "value": "inurl:security",
+      },
+      {
+        "id": 52,
+        "title": "Publicly Accessible Git Directories",
+        "description": "Finds exposed .git directories that may contain source code or credentials.",
+        "content": "site:[TARGET] inurl:\"/.git/\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 53,
+        "title": "Open Confluence Pages",
+        "description": "Finds publicly accessible Confluence pages that may contain internal documentation.",
+        "content": "site:[TARGET] inurl:\"/pages/viewpage.action\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 54,
+        "title": "Publicly Exposed JWT Tokens",
+        "description": "Finds JWT tokens leaked in public pages.",
+        "content": "site:[TARGET] intext:\"eyJ\" | intext:\"jwt\"",
+        "category": "Authentication Issues",
+        "icon": "lock.svg"
+      },
+      {
+        "id": 55,
+        "title": "Exposed PHP Info Pages",
+        "description": "Finds publicly accessible phpinfo pages that may disclose server details.",
+        "content": "site:[TARGET] inurl:\"phpinfo.php\"",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 56,
+        "title": "Publicly Available htpasswd Files",
+        "description": "Finds exposed .htpasswd files containing hashed passwords.",
+        "content": "site:[TARGET] inurl:\".htpasswd\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 57,
+        "title": "Exposed Backup Files",
+        "description": "Finds publicly accessible backup files that may contain sensitive data.",
+        "content": "site:[TARGET] ext:bak | ext:backup | ext:old",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 58,
+        "title": "Publicly Accessible WebEx Recordings",
+        "description": "Finds exposed Cisco WebEx meeting recordings.",
+        "content": "site:webex.com [TARGET] inurl:\"/recording\"",
+        "category": "Privacy Leaks",
+        "icon": "privacy.svg"
+      },
+      {
+        "id": 59,
+        "title": "Exposed MongoDB Configuration Files",
+        "description": "Finds MongoDB configuration files that may contain database credentials.",
+        "content": "site:[TARGET] ext:conf intext:\"mongodb\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 60,
+        "title": "Exposed API Logs",
+        "description": "Finds public API logs that may contain sensitive data.",
+        "content": "site:[TARGET] ext:log intext:\"api_key\" | intext:\"secret\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 61,
+        "title": "Exposed WordPress Configuration File",
+        "description": "Finds publicly accessible WordPress wp-config.php files.",
+        "content": "site:[TARGET] inurl:\"wp-config.php\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 62,
+        "title": "Exposed Environment Variables",
+        "description": "Finds publicly exposed .env files that may contain API keys and credentials.",
+        "content": "site:[TARGET] inurl:\".env\"",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 63,
+        "title": "Publicly Accessible Web Shells",
+        "description": "Finds open web shells that may allow remote command execution.",
+        "content": "site:[TARGET] inurl:\"/wso.php\" | inurl:\"/c99.php\" | inurl:\"/r57.php\"",
+        "category": "Remote Code Execution",
+        "icon": "danger.svg"
+      },
+      {
+        "id": 64,
+        "title": "Exposed Microsoft Office Documents",
+        "description": "Finds publicly accessible Microsoft Office documents that may contain sensitive information.",
+        "content": "site:[TARGET] ext:doc | ext:docx | ext:xls | ext:xlsx | ext:ppt | ext:pptx",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 65,
+        "title": "Publicly Accessible Private Keys",
+        "description": "Finds private keys that may be accidentally exposed.",
+        "content": "site:[TARGET] ext:key | ext:pem | ext:ppk intext:\"PRIVATE KEY\"",
+        "category": "Cryptography",
+        "icon": "lock.svg"
+      },
+      {
+        "id": 66,
+        "title": "Exposed Payment Transactions",
+        "description": "Finds transaction details and financial records.",
+        "content": "site:[TARGET] intext:\"transaction ID\" | intext:\"payment successful\"",
+        "category": "Financial Data Exposure",
+        "icon": "money.svg"
+      },
+      {
+        "id": 67,
+        "title": "Publicly Accessible API Endpoints",
+        "description": "Finds exposed API endpoints that might be publicly accessible.",
+        "content": "site:[TARGET] inurl:\"/api/\" | inurl:\"/v1/\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": 68,
+        "title": "Exposed Database Dumps",
+        "description": "Finds SQL dump files that may contain sensitive database contents.",
+        "content": "site:[TARGET] ext:sql | ext:db | ext:sqlite",
+        "category": "Sensitive Files",
+        "icon": "file.svg"
+      },
+      {
+        "id": 69,
+        "title": "Publicly Accessible Log Files",
+        "description": "Finds publicly accessible logs that may contain debug data, passwords, or API keys.",
+        "content": "site:[TARGET] ext:log",
+        "category": "Information Disclosure",
+        "icon": "folder.svg"
+      },
+      {
+        "id": 70,
+        "title": "Exposed Elasticsearch Instances",
+        "description": "Finds open Elasticsearch database instances that may allow unauthorized access.",
+        "content": "site:[TARGET] inurl:\"_search\" | inurl:\"_cat/indices\"",
+        "category": "Cloud Security",
+        "icon": "cloud.svg"
+      },
+      {
+        "id": "71",
+        "title": "'Responsible Disclosure' in URL",
+        "description": "Finds self hosted bug bounty programs with responsible disclosure policies.",
+        "content": "inurl:responsible-disclosure",
         "category": "General",
-        "createdAt": "2025-02-15T15:26:05.083Z"
-    },
-    {
-        "id": "651854ec-eeca-4dda-b7c5-dacc0d62b8b5",
-        "title": "Find Login Functionality",
-        "description": "site:[TARGET] inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:secure",
-        "value": "site:[TARGET] inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:secure",
-        "category": "Sensitive Functionalities",
-        "createdAt": "2025-02-15T18:50:23.859Z",
-        "icon": "bulb.svg"
-    },
-    {
-        "id": "cb1bb74f-6e0a-4848-a642-84da7e16f60d",
-        "title": "Find Environments",
-        "description": "site:[TARGET] inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo",
-        "value": "site:[TARGET] inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo",
-        "category": "Sensitive Functionalities",
-        "createdAt": "2025-02-16T13:11:18.135Z",
-        "icon": "bulb.svg"
-    },
-    {
-        "id": "f7bc941d-a7ff-4ddc-b5f9-0a51bb4ea8ec",
-        "title": "Find Vulnerable Parameters",
-        "description": "site:[TARGET] inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http",
-        "value": "site:[TARGET] inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http",
-        "category": "Sensitive Functionalities",
-        "createdAt": "2025-02-16T13:13:39.620Z",
-        "icon": "bulb.svg"
+        "icon": "search.svg"
     }
 ]

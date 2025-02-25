@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localStorage";
 import { format } from "date-fns";
@@ -48,7 +48,6 @@ import { Dork } from "@/models/dork";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
-  const [generalDorks, setGeneralDorks] = useState<Dork[]>([]);
   const [target, setTarget] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [isUpdatingTarget, setIsUpdatingTarget] = useState<boolean>(false);
@@ -78,25 +77,26 @@ export default function Home() {
     if (localTarget) {
       setTarget(localTarget);
     }
-    fetchGeneralDorks();
     fetchDorks();
   }, []); // Runs once when component mounts.
 
   const fetchDorks = async () => {
     fetch("/data/dorks.json")
       .then((res) => res.json())
-      .then((data) => data.filter((dork: Dork) => (dork.category !== "General")))
       .then((data) => setDorks(data))
       .catch((error) => console.error("Error loading cards:", error));
   };
 
-  const fetchGeneralDorks = async () => {
-    fetch("/data/dorks.json")
-      .then((res) => res.json())
-      .then((data) => data.filter((dork: Dork) => (dork.category === "General")))
-      .then((data) => setGeneralDorks(data))
-      .catch((error) => console.error("Error loading cards:", error));
-  };
+
+  // Filtered Dorks
+  const filteredDorks = useMemo(() => {
+    return dorks.filter(dork =>
+      dork.title.toLowerCase().includes(search.toLowerCase()) ||
+      dork.description?.toLowerCase().includes(search.toLowerCase()) ||
+      dork.content.toLowerCase().includes(search.toLowerCase()) ||
+      dork.category?.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [search, dorks]);
 
   const searchDorks = async () => {
     try {
@@ -112,7 +112,7 @@ export default function Home() {
   };
 
   function googleSearch(dork: Dork) {
-    let searchTerm = dork.value;
+    let searchTerm = dork.content;
     searchTerm = searchTerm.replaceAll("[TARGET]", target);
     const baseUrl = "https://www.google.com";
     const url = `${baseUrl}/search?q=${encodeURIComponent(searchTerm)}`;
@@ -139,36 +139,8 @@ export default function Home() {
     searchDorks();
   };
 
-  const toggleFavorite = async (id: string | undefined) => {
-    try {
-      const response = await fetch(`/api/dorks/${id}/toggleFavorites`, {
-        method: "PATCH",
-      });
-      if (!response.ok) throw new Error("Failed to toggle favorite");
-
-      // const updatedDork = await response.json();
-
-      // // Update UI
-      // setDorks((prevDorks) =>
-      //   prevDorks.map((dork) =>
-      //     dork.id === id ? { ...dork, favorite: updatedDork.favorite } : dork
-      //   )
-      // );
-      fetchDorks();
-    } catch (error) {
-      console.error("Error toggling favorite:", error);
-    }
-  };
-
   const handleEditButtonClick = () => {
     setIsUpdatingTarget(true);
-  };
-
-  const bulkOpenDorks = (dorks: Dork[]) => {
-    // Bulk open dorks is blocked by browser.
-    // for(let dork of dorks) {
-    //   googleSearch(dork);
-    // }
   };
 
   return (
@@ -197,7 +169,7 @@ export default function Home() {
           </a>
         </div>
         <div className="flex items-center gap-3">
-          <Popover>
+          {/* <Popover>
             <PopoverTrigger>
               <SortDescIcon className="font-bold text-2xl" />
             </PopoverTrigger>
@@ -280,35 +252,22 @@ export default function Home() {
                 </div>
               </form>
             </PopoverContent>
-          </Popover>
-          <Popover>
-            <PopoverTrigger>
-              <SearchIcon className="font-bold text-2xl" />
-            </PopoverTrigger>
-            <PopoverContent>
-              <form
-                onSubmit={handleSearchSubmit}
-                className="flex flex-col items-start gap-2 w-full"
-              >
-                <div className="w-full flex flex-col gap-2">
-                  <h3 className="flex items-center justify-start gap-2 font-semibold">
-                    <SearchIcon /> Search
-                  </h3>
-                  <hr />
-                  <Input
-                    value={search}
-                    onChange={handleSearchChange}
-                    placeholder="Search dorks by title"
-                  />
-                </div>
-                <div className="w-full flex items-center justify-end">
-                  <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                    <SearchIcon /> Search
-                  </Button>
-                </div>
-              </form>
-            </PopoverContent>
-          </Popover>
+          </Popover> */}
+          <form
+            onSubmit={handleSearchSubmit}
+            className="flex flex items-start gap-2 w-full"
+          >
+            <div className="relative w-full">
+              <Input
+                value={search}
+                onChange={handleSearchChange}
+                placeholder="Search dorks..."
+                className="pl-10"
+              />
+              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+            </div>
+            {/* <Button><SearchIcon/></Button> */}
+          </form>
         </div>
         <div className="flex flex-col w-full">
           <div className="generalDorks p-2">
@@ -318,8 +277,8 @@ export default function Home() {
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
-              {generalDorks.map((dork, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
+              {filteredDorks.filter(dork => (dork.category === "General")).map((dork, index) => (
                 <Card
                   key={index}
                   className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
@@ -347,11 +306,11 @@ export default function Home() {
                       /> */}
                     </div>
 
-                    {/* <CardContent onClick={() => googleSearch(dork)}>
+                    <CardContent onClick={() => googleSearch(dork)}>
                       <p className="text-sm text-gray-600">
                         {dork.description}
                       </p>
-                    </CardContent> */}
+                    </CardContent>
                   </div>
                   <CardFooter
                     className="flex items-center justify-between w-full"
@@ -361,14 +320,14 @@ export default function Home() {
                       <Folder />
                       <p>{dork.category}</p>
                     </div>
-                    <div className="flex items-center text-xs text-gray-400 gap-1">
+                    {/* <div className="flex items-center text-xs text-gray-400 gap-1">
                       <Calendar />
                       <p>
                         {dork.createdAt
                           ? format(dork.createdAt, "dd/MM/yyyy")
                           : ""}
                       </p>
-                    </div>
+                    </div> */}
                   </CardFooter>
                 </Card>
               ))}
@@ -413,8 +372,8 @@ export default function Home() {
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-6 gap-2 p-2 w-full">
-              {dorks.map((dork, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
+              {filteredDorks.filter(dork => (dork.category !== "General")).map((dork, index) => (
                 <Card
                   key={index}
                   className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
@@ -427,10 +386,11 @@ export default function Home() {
                       >
                         <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
                           <Image
-                            src={`/images/icons/${dork.icon ?? 'dork.svg'}`} // Replace with your image
+                            src={`/images/icons/${dork.icon}`}
+                            onError={(e) => e.currentTarget.src = "/images/icons/search.svg"} // Replace with your image
                             alt="dork-icon"
-                            width={50}
-                            height={50}
+                            width={40}
+                            height={40}
                             className="rounded-lg"
                           /> {dork.title}</CardTitle>
                       </CardHeader>
@@ -442,11 +402,11 @@ export default function Home() {
                       /> */}
                     </div>
 
-                    {/* <CardContent onClick={() => googleSearch(dork)}>
+                    <CardContent onClick={() => googleSearch(dork)}>
                       <p className="text-sm text-gray-600">
                         {dork.description}
                       </p>
-                    </CardContent> */}
+                    </CardContent>
                   </div>
                   <CardFooter
                     className="flex items-center justify-between w-full"
@@ -456,14 +416,14 @@ export default function Home() {
                       <Folder />
                       <p>{dork.category}</p>
                     </div>
-                    <div className="flex items-center text-xs text-gray-400 gap-1">
+                    {/* <div className="flex items-center text-xs text-gray-400 gap-1">
                       <Calendar />
                       <p>
                         {dork.createdAt
                           ? format(dork.createdAt, "dd/MM/yyyy")
                           : ""}
                       </p>
-                    </div>
+                    </div> */}
                   </CardFooter>
                 </Card>
               ))}
