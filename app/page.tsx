@@ -12,18 +12,12 @@ import {
 import Image from "next/image";
 
 import {
-  HeartIcon,
-  FolderOpen,
   Edit,
   Save,
   Folder,
-  Calendar,
   TargetIcon,
   SearchIcon,
   FilterIcon,
-  SortAscIcon,
-  SortDescIcon,
-  Filter,
   SearchCheckIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -31,20 +25,6 @@ import { Input } from "@/components/ui/input";
 import { useEffect, useMemo, useState } from "react";
 
 import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localStorage";
-import { format } from "date-fns";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Dork } from "@/models/dork";
 
 export default function Home() {
@@ -58,28 +38,13 @@ export default function Home() {
     { label: "Sensitive Functionalities", value: "sensitive_functionalities" },
   ];
 
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
-
-  const handleCheckboxChange = (value: string) => {
-    setSelectedOptions((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value]
-    );
-  };
-
-  const handleFilterSubmit = (e: any) => {
-    e.preventDefault();
-    console.log("Selected Filters:", selectedOptions);
-  };
-
   useEffect(() => {
     const localTarget = getFromLocalStorage("target");
     if (localTarget) {
       setTarget(localTarget);
     }
     fetchDorks();
-  }, []); // Runs once when component mounts.
+  }, []);
 
   const fetchDorks = async () => {
     fetch("/data/dorks.json")
@@ -146,13 +111,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full">
-      {/* <Image
-        src="/images/target.svg" // Replace with your image
-        alt="Target Image"
-        width={300}
-        height={300}
-        className="rounded-lg"
-      /> */}
       <div className="flex flex-col items-center justify-items-center w-full">
         <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-600 p-2">
           <div className="p-2">
@@ -162,7 +120,6 @@ export default function Home() {
                 D<SearchCheckIcon className="text-amber-300 font-bold w-10 h-10" />rkmine
               </h1>
               1.0.0 
-              {/* <p className="text-lg font-bold text-cyan-600">v1.0.0</p> */}
             </div>
             <a
               href="http://linkedin.com/in/gkcodez"
@@ -191,168 +148,14 @@ export default function Home() {
               />
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
             </div>
-            {/* <Button><SearchIcon/></Button> */}
           </form>
           {dorks?.length > 0 && <p className="flex items-center justify-center gap-2">
                   <SearchIcon /> Total Dorks: {dorks?.length} <FilterIcon /> Filtered Dorks: {filteredDorks?.length}
                 </p>}
-          {/* <Popover>
-            <PopoverTrigger>
-              <SortDescIcon className="font-bold text-2xl" />
-            </PopoverTrigger>
-            <PopoverContent>
-              <form
-                onSubmit={handleSearchSubmit}
-                className="flex flex-col items-center gap-2 w-full"
-              >
-                <div className="w-full flex flex-col gap-2">
-                  <h3 className="flex items-center justify-start gap-2 font-semibold">
-                    <SortAscIcon /> Sort
-                  </h3>
-                  <hr />
-                  <div className="flex items-center justify-start gap-2">
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Sort By" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="title">Title</SelectItem>
-                        <SelectItem value="created_date">
-                          Created Date
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Sort Direction" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="asc">Ascending</SelectItem>
-                        <SelectItem value="desc">Descending</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-                <div className="w-full flex items-center justify-end">
-                  <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                    <SortAscIcon /> Sort
-                  </Button>
-                </div>
-              </form>
-            </PopoverContent>
-          </Popover>
-          <Popover>
-            <PopoverTrigger>
-              <FilterIcon className="font-bold text-2xl" />
-            </PopoverTrigger>
-            <PopoverContent>
-              <form
-                onSubmit={handleFilterSubmit}
-                className="flex flex-col items-center gap-2 w-full"
-              >
-                <div className="w-full flex flex-col gap-2">
-                  <h3 className="flex items-center justify-start gap-2 font-semibold">
-                    <FilterIcon /> Filter
-                  </h3>
-                  <hr />
-                  <p className="font-semibold">Categories</p>
-                  {options.map(({ label, value }) => (
-                    <label
-                      key={value}
-                      className="flex items-center gap-2 text-sm"
-                    >
-                      <Checkbox
-                        checked={selectedOptions.includes(value)}
-                        onCheckedChange={() =>
-                          handleCheckboxChange(value)
-                        }
-                      />
-                      {label}
-                    </label>
-                  ))}
-                </div>
-                <div className="w-full flex items-center justify-end">
-                  <Button className="bg-indigo-600 hover:bg-indigo-800 text-white">
-                    <FilterIcon /> Filter
-                  </Button>
-                </div>
-              </form>
-            </PopoverContent>
-          </Popover> */}
 
         </div>
         <div className="flex flex-col w-full">
-          <div className="generalDorks p-2">
-            <div className="flex items-center justify-start p-2 w-full">
-              <h3 className="flex items-center gap-2 text-left font-bold tracking-tight text-xl text-cyan-600 w-full">
-                <FolderOpen /> General Dorks
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
-              {filteredDorks.filter(dork => (dork.category === "General")).map((dork, index) => (
-                <Card
-                  key={index}
-                  className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
-                >
-                  <div className="flex flex-col justify-start">
-                    <div className="w-full flex items-start justify-between">
-                      <CardHeader
-                        className="text-md w-full flex items-start justify-between"
-                        onClick={() => googleSearch(dork)}
-                      >
-                        <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
-                          <Image
-                            src={`/images/icons/${dork.icon ?? 'search.svg'}`} // Replace with your image
-                            alt="dork-icon"
-                            width={50}
-                            height={50}
-                            className="rounded-lg"
-                          /> {dork.title}</CardTitle>
-                      </CardHeader>
-                      {/* <HeartIcon
-                        onClick={() => toggleFavorite(dork.id)}
-                        className={`${
-                          dork.favorite ? "fill-red-600 text-red-700" : ""
-                        } relative top-2 right-2`}
-                      /> */}
-                    </div>
-
-                    <CardContent onClick={() => googleSearch(dork)}>
-                      <p className="text-sm text-gray-600">
-                        {dork.description}
-                      </p>
-                    </CardContent>
-                  </div>
-                  <CardFooter
-                    className="flex items-center justify-between w-full"
-                    onClick={() => googleSearch(dork)}
-                  >
-                    <div className="flex items-center text-xs text-gray-400 gap-1">
-                      <Folder />
-                      <p>{dork.category}</p>
-                    </div>
-                    {/* <div className="flex items-center text-xs text-gray-400 gap-1">
-                      <Calendar />
-                      <p>
-                        {dork.createdAt
-                          ? format(dork.createdAt, "dd/MM/yyyy")
-                          : ""}
-                      </p>
-                    </div> */}
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          </div>
           <div className="allDorks p-2">
-            <div className="flex items-center justify-start p-2 w-full">
-              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight text-cyan-600 w-full">
-                <FolderOpen /> Target Dorks
-              </h3>
-
-            </div>
             <div className="flex items-center justify-start gap-2 flex-1 w-full p-2">
               <div className="flex items-center justify-start gap-2 w-full">
                 <span className="font-bold flex items-center gap-2">
@@ -386,7 +189,7 @@ export default function Home() {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
-              {filteredDorks.filter(dork => (dork.category !== "General")).map((dork, index) => (
+              {filteredDorks.map((dork, index) => (
                 <Card
                   key={index}
                   className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
@@ -407,12 +210,6 @@ export default function Home() {
                             className="rounded-lg"
                           /> {dork.title}</CardTitle>
                       </CardHeader>
-                      {/* <HeartIcon
-                        onClick={() => toggleFavorite(dork.id)}
-                        className={`${
-                          dork.favorite ? "fill-red-600 text-red-700" : ""
-                        } relative top-2 right-2`}
-                      /> */}
                     </div>
 
                     <CardContent onClick={() => googleSearch(dork)}>
@@ -429,14 +226,6 @@ export default function Home() {
                       <Folder />
                       <p>{dork.category}</p>
                     </div>
-                    {/* <div className="flex items-center text-xs text-gray-400 gap-1">
-                      <Calendar />
-                      <p>
-                        {dork.createdAt
-                          ? format(dork.createdAt, "dd/MM/yyyy")
-                          : ""}
-                      </p>
-                    </div> */}
                   </CardFooter>
                 </Card>
               ))}
