@@ -24,6 +24,7 @@ import {
   SortAscIcon,
   SortDescIcon,
   Filter,
+  SearchCheckIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -144,7 +145,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full px-2 py-5">
+    <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full">
       {/* <Image
         src="/images/target.svg" // Replace with your image
         alt="Target Image"
@@ -152,23 +153,41 @@ export default function Home() {
         height={300}
         className="rounded-lg"
       /> */}
-      <div className="flex flex-col items-center justify-items-center gap-5 w-full">
-        <div className="flex flex-col gap-2 text-center">
-          <h1 className="text-4xl font-bold tracking-tight lg:text-5xl text-indigo-600">
-            Dorkmine
+      <div className="flex flex-col items-center justify-items-center w-full">
+        <div className="flex flex-col items-center gap-2 text-center w-full bg-red-100 p-2">
+          <div className="p-2">
+          <h1 className="flex items-center text-4xl font-bold tracking-widest text-indigo-600 p-2">
+          
+          D<SearchCheckIcon className="text-red-600 font-bold w-10 h-10" />rkmine
           </h1>
           <a
             href="http://linkedin.com/in/gkcodez"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p className="text-gray-500">
+            <p className="text-indigo-600">
               Developed by{" "}
               <span className="text-red-600 underline">@gkcodez</span>
             </p>
           </a>
+          </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-3 w-full bg-red-100 sticky top-0 p-2">
+        <form
+            onSubmit={handleSearchSubmit}
+            className="flex flex items-start gap-2 w-1/2"
+          >
+            <div className="relative w-full">
+              <Input
+                value={search}
+                onChange={handleSearchChange}
+                placeholder="Search dorks..."
+                className="pl-10 bg-white text-gray-600"
+              />
+              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+            </div>
+            {/* <Button><SearchIcon/></Button> */}
+          </form>
           {/* <Popover>
             <PopoverTrigger>
               <SortDescIcon className="font-bold text-2xl" />
@@ -253,21 +272,7 @@ export default function Home() {
               </form>
             </PopoverContent>
           </Popover> */}
-          <form
-            onSubmit={handleSearchSubmit}
-            className="flex flex items-start gap-2 w-full"
-          >
-            <div className="relative w-full">
-              <Input
-                value={search}
-                onChange={handleSearchChange}
-                placeholder="Search dorks..."
-                className="pl-10"
-              />
-              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
-            </div>
-            {/* <Button><SearchIcon/></Button> */}
-          </form>
+          
         </div>
         <div className="flex flex-col w-full">
           <div className="generalDorks p-2">
