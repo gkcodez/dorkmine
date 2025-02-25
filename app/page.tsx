@@ -355,7 +355,7 @@ export default function Home() {
                 </span>{" "}
                 {!isUpdatingTarget && (
                   <div className="flex items-center gap-2">
-                    <span id="currentTarget" className="text-orange-600">
+                    <span id="currentTarget" className="text-amber-600">
                       {target}
                     </span>
                     <Edit onClick={handleEditButtonClick} />
