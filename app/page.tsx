@@ -154,25 +154,28 @@ export default function Home() {
         className="rounded-lg"
       /> */}
       <div className="flex flex-col items-center justify-items-center w-full">
-        <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-100 p-2">
+        <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-600 p-2">
           <div className="p-2">
-          <h1 className="flex items-center text-4xl font-bold tracking-widest text-cyan-600 p-2">
+            <div className="flex items-start justify-center">
+          <h1 className="flex items-center text-4xl font-bold tracking-wide text-white p-2">
           
-          D<SearchCheckIcon className="text-orange-600 font-bold w-10 h-10" />rkmine
+          D<SearchCheckIcon className="text-amber-300 font-bold w-10 h-10" />rkmine
           </h1>
+          {/* <p className="text-lg font-bold text-cyan-600">v1.0.0</p> */}
+          </div>
           <a
             href="http://linkedin.com/in/gkcodez"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p className="text-cyan-600">
+            <p className="text-white">
               Developed by{" "}
-              <span className="text-orange-600 underline">@gkcodez</span>
+              <span className="text-amber-300 underline">@gkcodez</span>
             </p>
           </a>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-3 w-full sticky top-0 bg-cyan-100 p-3 shadow-md">
+        <div className="flex items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 p-3 shadow-md">
         <form
             onSubmit={handleSearchSubmit}
             className="flex flex items-start gap-2 w-full md:w-1/2"
