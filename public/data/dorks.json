@@ -564,7 +564,7 @@
         "title": "'Responsible Disclosure' in URL",
         "description": "Finds self hosted bug bounty programs with responsible disclosure policies.",
         "content": "inurl:responsible-disclosure",
-        "category": "General",
+        "category": "Bug Bounty Programs",
         "icon": "search.svg"
     }
 ]

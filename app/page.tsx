@@ -22,21 +22,29 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import { useEffect, useMemo, useState } from "react";
 
 import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localStorage";
 import { Dork } from "@/models/dork";
+import React from "react";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
   const [target, setTarget] = useState<string>("");
   const [search, setSearch] = useState<string>("");
+  const [categories, setCategories] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [isUpdatingTarget, setIsUpdatingTarget] = useState<boolean>(false);
-  const options = [
-    { label: "Bug Bounty Programs", value: "bug_bounty_programs" },
-    { label: "Sensitive Files", value: "sensitive_files" },
-    { label: "Sensitive Functionalities", value: "sensitive_functionalities" },
-  ];
 
   useEffect(() => {
     const localTarget = getFromLocalStorage("target");
@@ -49,33 +57,34 @@ export default function Home() {
   const fetchDorks = async () => {
     fetch("/data/dorks.json")
       .then((res) => res.json())
-      .then((data) => setDorks(data))
+      .then((data) => {
+        setDorks(data);
+        let categories = data.map((dork: Dork) => dork.category);
+        categories = [...new Set(categories)];
+        setCategories(categories);
+      }).then(() => console.log("Dorks loaded successfully"))
       .catch((error) => console.error("Error loading cards:", error));
   };
 
 
   // Filtered Dorks
   const filteredDorks = useMemo(() => {
-    return dorks.filter(dork =>
-      dork.title.toLowerCase().includes(search.toLowerCase()) ||
-      dork.description?.toLowerCase().includes(search.toLowerCase()) ||
-      dork.content.toLowerCase().includes(search.toLowerCase()) ||
-      dork.category?.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [search, dorks]);
+    let results = dorks.filter(dork => {
+      const matchesSearch =
+        dork.title.toLowerCase().includes(search.toLowerCase()) ||
+        dork.description?.toLowerCase().includes(search.toLowerCase()) ||
+        dork.content.toLowerCase().includes(search.toLowerCase()) ||
+        dork.category.toLowerCase().includes(search.toLowerCase());
 
-  const searchDorks = async () => {
-    try {
-      const response = await fetch(`/api/dorks?title=${search}`); // Adjust API URL if needed
-      if (!response.ok) {
-        throw new Error("Failed to fetch dorks");
-      }
-      const data = await response.json();
-      setDorks(data);
-    } catch (error) {
-      console.error("Error fetching dorks:", error);
-    }
-  };
+      const matchesCategory =
+        selectedCategory === "" || dork.category.toLowerCase() === selectedCategory.toLowerCase();
+
+      return matchesSearch && matchesCategory;
+    });
+    console.log(selectedCategory);
+    console.log("Filtered dorks:", results);
+    return results;
+  }, [search, dorks, selectedCategory]);
 
   function googleSearch(dork: Dork) {
     let searchTerm = dork.content;
@@ -100,13 +109,13 @@ export default function Home() {
     setSearch(event.target.value);
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    searchDorks();
-  };
-
   const handleEditButtonClick = () => {
     setIsUpdatingTarget(true);
+  };
+
+  const handleCategoryChange = (value: string) => {
+    setSelectedCategory(value);
+    console.log("Selected category:", value);
   };
 
   return (
@@ -119,7 +128,7 @@ export default function Home() {
 
                 D<SearchCheckIcon className="text-amber-300 font-bold w-10 h-10" />rkmine
               </h1>
-              1.0.0 
+              1.0.0
             </div>
             <a
               href="http://linkedin.com/in/gkcodez"
@@ -136,8 +145,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md">
           <form
-            onSubmit={handleSearchSubmit}
-            className="flex flex items-start gap-2 w-full md:w-1/2"
+            className="flex flex-col md:flex-row items-center gap-2 w-full md:w-3/4 lg:w-1/2"
           >
             <div className="relative w-full">
               <Input
@@ -148,10 +156,34 @@ export default function Home() {
               />
               <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
             </div>
+            <Select onValueChange={(value) => handleCategoryChange(value)}>
+              <SelectTrigger className="bg-white rounded-lg text-gray-600 shadow-sm w-full md:w-1/3 p-5">
+                <SelectValue placeholder="Select category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Categories</SelectLabel>
+                  {categories.map((category, index) => (
+                    <SelectItem key={index} value={category}>{category}</SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </form>
-          {dorks?.length > 0 && <p className="flex items-center justify-center gap-2">
-                  <SearchIcon /> Total Dorks: {dorks?.length} <FilterIcon /> Filtered Dorks: {filteredDorks?.length}
-                </p>}
+
+          {
+            dorks?.length > 0 &&
+            <div className="flex md:flex-row items-start justify-center gap-2">
+              <p className="flex items-center justify-center gap-2">
+                <SearchIcon/> Total Dorks: {dorks?.length}
+              </p>
+              <p className="flex items-center justify-center gap-2">
+                <FilterIcon/> Filtered Dorks: {filteredDorks.length}
+              </p>
+            </div>
+
+
+          }
 
         </div>
         <div className="flex flex-col w-full">

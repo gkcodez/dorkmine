@@ -1,10 +1,8 @@
 export interface Dork {
-    id?: string;
+    id: string;
     title: string;
-    description?: string;
+    description: string;
     content: string;
-    author?: string;
-    category?: string;
-    createdAt?: Date
+    category: string;
     icon: string;
 }
