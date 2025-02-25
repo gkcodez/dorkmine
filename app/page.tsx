@@ -154,28 +154,28 @@ export default function Home() {
         className="rounded-lg"
       /> */}
       <div className="flex flex-col items-center justify-items-center w-full">
-        <div className="flex flex-col items-center gap-2 text-center w-full bg-red-100 p-2">
+        <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-100 p-2">
           <div className="p-2">
-          <h1 className="flex items-center text-4xl font-bold tracking-widest text-indigo-600 p-2">
+          <h1 className="flex items-center text-4xl font-bold tracking-widest text-cyan-600 p-2">
           
-          D<SearchCheckIcon className="text-red-600 font-bold w-10 h-10" />rkmine
+          D<SearchCheckIcon className="text-orange-600 font-bold w-10 h-10" />rkmine
           </h1>
           <a
             href="http://linkedin.com/in/gkcodez"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <p className="text-indigo-600">
+            <p className="text-cyan-600">
               Developed by{" "}
-              <span className="text-red-600 underline">@gkcodez</span>
+              <span className="text-orange-600 underline">@gkcodez</span>
             </p>
           </a>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-3 w-full bg-red-100 sticky top-0 p-2">
+        <div className="flex items-center justify-center gap-3 w-full bg-cyan-100 sticky top-0 p-5">
         <form
             onSubmit={handleSearchSubmit}
-            className="flex flex items-start gap-2 w-1/2"
+            className="flex flex items-start gap-2 w-full md:w-1/2"
           >
             <div className="relative w-full">
               <Input
@@ -277,7 +277,7 @@ export default function Home() {
         <div className="flex flex-col w-full">
           <div className="generalDorks p-2">
             <div className="flex items-center justify-start p-2 w-full">
-              <h3 className="flex items-center gap-2 text-left font-bold tracking-tight text-xl text-indigo-600 w-full">
+              <h3 className="flex items-center gap-2 text-left font-bold tracking-tight text-xl text-cyan-600 w-full">
                 <FolderOpen /> General Dorks
               </h3>
             </div>
@@ -340,7 +340,7 @@ export default function Home() {
           </div>
           <div className="allDorks p-2">
             <div className="flex items-center justify-start p-2 w-full">
-              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight text-indigo-600 w-full">
+              <h3 className="flex items-center gap-2 text-left text-xl font-bold tracking-tight text-cyan-600 w-full">
                 <FolderOpen /> Target Dorks
               </h3>
 
@@ -352,7 +352,7 @@ export default function Home() {
                 </span>{" "}
                 {!isUpdatingTarget && (
                   <div className="flex items-center gap-2">
-                    <span id="currentTarget" className="text-red-600">
+                    <span id="currentTarget" className="text-orange-600">
                       {target}
                     </span>
                     <Edit onClick={handleEditButtonClick} />
