@@ -565,7 +565,7 @@
         "description": "Finds public bug bounty policy pages on self-hosted websites.",
         "content": "site:[TARGET] inurl:\"bug-bounty\" | inurl:\"security.txt\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 72,
@@ -573,7 +573,7 @@
         "description": "Finds publicly available bug reports or security disclosures.",
         "content": "site:[TARGET] inurl:\"/reports/\" | intext:\"security vulnerability\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 73,
@@ -581,7 +581,7 @@
         "description": "Locates web pages where companies describe their bug bounty programs.",
         "content": "site:[TARGET] intext:\"bug bounty\" OR intext:\"security research program\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 74,
@@ -589,7 +589,7 @@
         "description": "Finds submission forms for reporting security vulnerabilities.",
         "content": "site:[TARGET] inurl:\"/report-bug\" | inurl:\"/submit-vulnerability\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 75,
@@ -597,7 +597,7 @@
         "description": "Finds security hall of fame pages that list bug bounty contributors.",
         "content": "site:[TARGET] inurl:\"/hall-of-fame\" | inurl:\"/security-researchers\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 76,
@@ -605,7 +605,7 @@
         "description": "Finds pages displaying top contributors to a bug bounty program.",
         "content": "site:[TARGET] inurl:\"/leaderboard\" | intext:\"top security researchers\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 77,
@@ -613,7 +613,7 @@
         "description": "Finds publicly accessible security issue tracking pages.",
         "content": "site:[TARGET] inurl:\"/vulnerabilities\" | inurl:\"/security-issues\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 78,
@@ -621,7 +621,7 @@
         "description": "Finds self-hosted websites where bug bounty disclosures are published.",
         "content": "site:[TARGET] inurl:\"/disclosures\" | intext:\"bug bounty report\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 79,
@@ -629,7 +629,7 @@
         "description": "Finds published PGP keys used for encrypted vulnerability disclosure.",
         "content": "site:[TARGET] intext:\"-----BEGIN PGP PUBLIC KEY BLOCK-----\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       },
       {
         "id": 80,
@@ -637,6 +637,6 @@
         "description": "Finds email addresses for responsible disclosure and bug bounty reports.",
         "content": "site:[TARGET] intext:\"security@\" | intext:\"vuln@\"",
         "category": "Bug Bounty Programs",
-        "icon": "program.svg"
+        "icon": "rocket.svg"
       }
 ]
