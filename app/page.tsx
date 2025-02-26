@@ -158,7 +158,7 @@ export default function Home() {
       placeholder="Search dorks..."
       className="text-gray-600 pl-10 pr-5 py-5 bg-transparent flex-1 focus:ring-0 focus:outline-none focus:border-transparent"
     />
-    <Select onValueChange={(value) => handleCategoryChange(value)}>
+    <Select onValueChange={(value) => handleCategoryChange(value)} defaultValue="All">
       <SelectTrigger className="bg-transparent text-gray-600 border-none w-1/3 focus:ring-0 focus:outline-none">
         <SelectValue placeholder="Select Category" />
       </SelectTrigger>
