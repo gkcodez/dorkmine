@@ -131,7 +131,6 @@ export default function Home() {
 
                 D<SearchCheckIcon className="text-yellow-400 font-bold w-12 h-12" />rkmine
               </h1>
-              1.0.0
             </div>
             <a
               href="http://linkedin.com/in/gkcodez"
