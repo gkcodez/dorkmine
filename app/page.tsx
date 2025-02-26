@@ -88,7 +88,11 @@ export default function Home() {
 
   function googleSearch(dork: Dork) {
     let searchTerm = dork.content;
-    searchTerm = searchTerm.replaceAll("[TARGET]", target);
+    if(target) {
+      searchTerm = searchTerm.replaceAll("[TARGET]", target);
+    } else {
+      searchTerm = searchTerm.replaceAll("site:", "").replaceAll("'[TARGET]'", "").replaceAll("[TARGET]", "");
+    }
     const baseUrl = "https://www.google.com";
     const url = `${baseUrl}/search?q=${encodeURIComponent(searchTerm)}`;
     window.open(url, `${dork.title}`);
