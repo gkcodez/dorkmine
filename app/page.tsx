@@ -31,12 +31,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton"
 
 import { useEffect, useMemo, useState } from "react";
 
 import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localStorage";
 import { Dork } from "@/models/dork";
 import React from "react";
+import { Separator } from "@/components/ui/separator";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
@@ -171,20 +173,14 @@ export default function Home() {
             </Select>
           </form>
 
-          {
-            dorks?.length > 0 &&
-            <div className="flex md:flex-row items-start justify-center gap-2">
-              <p className="flex items-center justify-center gap-2">
-                <SearchIcon /> Total Dorks: {dorks?.length}
-              </p>
-              <p className="flex items-center justify-center gap-2">
-                <FilterIcon /> Filtered Dorks: {filteredDorks.length}
-              </p>
-            </div>
-
-
-          }
-
+          <div className="flex md:flex-row items-start justify-center gap-2">
+            <p className="flex items-center justify-center gap-2">
+              <SearchIcon /> Total Dorks: {dorks?.length ?? 0}
+            </p>
+            <p className="flex items-center justify-center gap-2">
+              <FilterIcon /> Filtered Dorks: {filteredDorks.length ?? 0}
+            </p>
+          </div>
         </div>
         <div className="flex flex-col w-full">
           <div className="allDorks p-2">
@@ -196,10 +192,10 @@ export default function Home() {
                 {!isUpdatingTarget && (
                   <div className="flex items-center gap-2">
                     <span id="currentTarget" className="text-amber-600">
-                      {target}
+                      {target ? target : "Target not configured"}
                     </span>
-                    <Button variant="ghost" type="button" onClick={handleEditButtonClick}>
-                      <Edit />
+                    <Button variant="default" type="button" onClick={handleEditButtonClick} className="bg-cyan-600 text-white hover:bg-cyan-700">
+                      <Edit /> Edit
                     </Button>
                   </div>
                 )}
@@ -214,56 +210,70 @@ export default function Home() {
                         onChange={handleTargetChange}
                         placeholder="Enter your target domain"
                       />
-                      <Button variant="ghost" type="submit">
-                        <Save />
+                      <Button variant="default" type="submit" className="bg-cyan-600 text-white hover:bg-cyan-700">
+                        <Save /> Save
                       </Button>
                     </form>
                   </div>
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
-              {filteredDorks.map((dork, index) => (
-                <Card
-                  key={index}
-                  className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
-                >
-                  <div className="flex flex-col justify-start">
-                    <div className="w-full flex items-start justify-between">
-                      <CardHeader
-                        className="text-md w-full flex items-start justify-between"
-                        onClick={() => googleSearch(dork)}
-                      >
-                        <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
-                          <Image
-                            src={`/images/icons/${dork.icon}`}
-                            onError={(e) => e.currentTarget.src = "/images/icons/search.svg"} // Replace with your image
-                            alt="dork-icon"
-                            width={40}
-                            height={40}
-                            className="rounded-lg"
-                          /> {dork.title}</CardTitle>
-                      </CardHeader>
-                    </div>
-
-                    <CardContent onClick={() => googleSearch(dork)}>
-                      <p className="text-sm text-gray-600">
-                        {dork.description}
-                      </p>
-                    </CardContent>
-                  </div>
-                  <CardFooter
-                    className="flex items-center justify-between w-full"
-                    onClick={() => googleSearch(dork)}
+            {dorks?.length === 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+                <Skeleton className="w-full h-48 rounded-md" />
+              </div>
+            )}
+            {dorks?.length !== 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
+                {filteredDorks.map((dork, index) => (
+                  <Card
+                    key={index}
+                    className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
                   >
-                    <div className="flex items-center text-xs text-gray-400 gap-1">
-                      <Folder />
-                      <p>{dork.category}</p>
+                    <div className="flex flex-col justify-start">
+                      <div className="w-full flex items-start justify-between">
+                        <CardHeader
+                          className="text-md w-full flex items-start justify-between"
+                          onClick={() => googleSearch(dork)}
+                        >
+                          <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
+                            <Image
+                              src={`/images/icons/${dork.icon}`}
+                              onError={(e) => e.currentTarget.src = "/images/icons/search.svg"} // Replace with your image
+                              alt="dork-icon"
+                              width={40}
+                              height={40}
+                              className="rounded-lg"
+                            /> {dork.title}</CardTitle>
+                        </CardHeader>
+                      </div>
+
+                      <CardContent onClick={() => googleSearch(dork)}>
+                        <p className="text-sm text-gray-600">
+                          {dork.description}
+                        </p>
+                      </CardContent>
                     </div>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
+                    <CardFooter
+                      className="flex items-center justify-between w-full"
+                      onClick={() => googleSearch(dork)}
+                    >
+                      <div className="flex items-center text-xs text-gray-400 gap-1">
+                        <Folder />
+                        <p>{dork.category}</p>
+                      </div>
+                    </CardFooter>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
