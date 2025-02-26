@@ -3,7 +3,7 @@
     "id": 1,
     "title": "SQL Error Messages",
     "description": "Locates websites with SQL error messages.",
-    "content": "site:TARGET intext:\"SQL syntax near\" | intext:\"syntax error has occurred\"",
+    "content": "site:[TARGET] intext:\"SQL syntax near\" | intext:\"syntax error has occurred\"",
     "category": "Injection (A03:2021)",
     "icon": "injection.svg"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "title": "Exposed Database Files",
     "description": "Finds publicly accessible database files.",
-    "content": "site:TARGET ext:sql | ext:db | ext:mdb",
+    "content": "site:[TARGET] ext:sql | ext:db | ext:mdb",
     "category": "Cryptographic Failures (A02:2021)",
     "icon": "lock.svg"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "title": "Log Files",
     "description": "Identifies exposed log files that may contain sensitive information.",
-    "content": "site:TARGET ext:log intext:\"password\" | intext:\"username\"",
+    "content": "site:[TARGET] ext:log intext:\"password\" | intext:\"username\"",
     "category": "Security Logging & Monitoring Failures (A09:2021)",
     "icon": "log.svg"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "title": "Admin Login Pages",
     "description": "Finds admin login portals for a target site.",
-    "content": "site:TARGET inurl:admin | inurl:login | inurl:administrator",
+    "content": "site:[TARGET] inurl:admin | inurl:login | inurl:administrator",
     "category": "Broken Access Control (A01:2021)",
     "icon": "access.svg"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "title": "Exposed Backup Files",
     "description": "Finds publicly accessible backup files.",
-    "content": "site:TARGET ext:bak | ext:old | ext:backup",
+    "content": "site:[TARGET] ext:bak | ext:old | ext:backup",
     "category": "Cryptographic Failures (A02:2021)",
     "icon": "lock.svg"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "title": "Open Directory Listings",
     "description": "Identifies directories with file listings enabled.",
-    "content": "site:TARGET intitle:\"index of\"",
+    "content": "site:[TARGET] intitle:\"index of\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "title": "Publicly Exposed Git Repositories",
     "description": "Finds exposed .git directories which may contain sensitive source code.",
-    "content": "site:TARGET inurl:\"/.git\"",
+    "content": "site:[TARGET] inurl:\"/.git\"",
     "category": "Cryptographic Failures (A02:2021)",
     "icon": "lock.svg"
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "title": "Configuration Files",
     "description": "Finds exposed configuration files that may contain credentials.",
-    "content": "site:TARGET ext:ini | ext:cfg | ext:env",
+    "content": "site:[TARGET] ext:ini | ext:cfg | ext:env",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "title": "PHP Info Pages",
     "description": "Finds phpinfo() pages which disclose server configuration details.",
-    "content": "site:TARGET inurl:\"phpinfo.php\"",
+    "content": "site:[TARGET] inurl:\"phpinfo.php\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "title": "Exposed WordPress Configuration",
     "description": "Finds exposed wp-config.php files that may contain database credentials.",
-    "content": "site:TARGET inurl:\"wp-config.php\" -intext:\"<?php\"",
+    "content": "site:[TARGET] inurl:\"wp-config.php\" -intext:\"<?php\"",
     "category": "Cryptographic Failures (A02:2021)",
     "icon": "lock.svg"
   },
@@ -403,7 +403,7 @@
     "id": 51,
     "title": "Exposed SVN Repository",
     "description": "Finds publicly accessible Subversion (SVN) repositories containing source code.",
-    "content": "site:TARGET inurl:\"/.svn/entries\"",
+    "content": "site:[TARGET] inurl:\"/.svn/entries\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -411,7 +411,7 @@
     "id": 52,
     "title": "Publicly Accessible Git Directories",
     "description": "Finds exposed .git directories that may contain source code or credentials.",
-    "content": "site:TARGET inurl:\"/.git/\"",
+    "content": "site:[TARGET] inurl:\"/.git/\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -419,7 +419,7 @@
     "id": 53,
     "title": "Open Confluence Pages",
     "description": "Finds publicly accessible Confluence pages that may contain internal documentation.",
-    "content": "site:TARGET inurl:\"/pages/viewpage.action\"",
+    "content": "site:[TARGET] inurl:\"/pages/viewpage.action\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -427,7 +427,7 @@
     "id": 54,
     "title": "Publicly Exposed JWT Tokens",
     "description": "Finds JWT tokens leaked in public pages.",
-    "content": "site:TARGET intext:\"eyJ\" | intext:\"jwt\"",
+    "content": "site:[TARGET] intext:\"eyJ\" | intext:\"jwt\"",
     "category": "Identification and Authentication Failures (A07:2021)",
     "icon": "incognito.svg"
   },
@@ -435,7 +435,7 @@
     "id": 55,
     "title": "Exposed PHP Info Pages",
     "description": "Finds publicly accessible phpinfo pages that may disclose server details.",
-    "content": "site:TARGET inurl:\"phpinfo.php\"",
+    "content": "site:[TARGET] inurl:\"phpinfo.php\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -443,7 +443,7 @@
     "id": 56,
     "title": "Publicly Available htpasswd Files",
     "description": "Finds exposed .htpasswd files containing hashed passwords.",
-    "content": "site:TARGET inurl:\".htpasswd\"",
+    "content": "site:[TARGET] inurl:\".htpasswd\"",
     "category": "Cryptographic Failures (A02:2021)",
     "icon": "lock.svg"
   },
@@ -451,7 +451,7 @@
     "id": 57,
     "title": "Exposed Backup Files",
     "description": "Finds publicly accessible backup files that may contain sensitive data.",
-    "content": "site:TARGET ext:bak | ext:backup | ext:old",
+    "content": "site:[TARGET] ext:bak | ext:backup | ext:old",
     "category": "Cryptographic Failures (A02:2021)",
     "icon": "lock.svg"
   },
@@ -467,7 +467,7 @@
     "id": 59,
     "title": "Exposed MongoDB Configuration Files",
     "description": "Finds MongoDB configuration files that may contain database credentials.",
-    "content": "site:TARGET ext:conf intext:\"mongodb\"",
+    "content": "site:[TARGET] ext:conf intext:\"mongodb\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
@@ -475,7 +475,7 @@
     "id": 60,
     "title": "Exposed API Logs",
     "description": "Finds public API logs that may contain sensitive data.",
-    "content": "site:TARGET ext:log intext:\"api_key\" | intext:\"secret\"",
+    "content": "site:[TARGET] ext:log intext:\"api_key\" | intext:\"secret\"",
     "category": "Security Logging & Monitoring Failures (A09:2021)",
     "icon": "log.svg"
   },
