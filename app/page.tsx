@@ -88,7 +88,7 @@ export default function Home() {
 
   function googleSearch(dork: Dork) {
     let searchTerm = dork.content;
-    if(target) {
+    if (target) {
       searchTerm = searchTerm.replaceAll("[TARGET]", target);
     } else {
       searchTerm = searchTerm.replaceAll("site:", "").replaceAll("'[TARGET]'", "").replaceAll("[TARGET]", "");
@@ -141,7 +141,7 @@ export default function Home() {
                 <p>
                   Developed by: <span className="text-yellow-300 relative group px-0 py-2">
                     @gkcodez
-                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-300 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-300 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                   </span>
                 </p>
               </div>
@@ -149,36 +149,33 @@ export default function Home() {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md">
-        <form
-  className="flex items-center gap-2 w-full md:w-3/4 lg:w-1/2"
->
-  <div className="relative w-full flex items-center bg-white rounded-lg shadow-sm">
-    <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
-    <Input
-      value={search}
-      onChange={handleSearchChange}
-      placeholder="Search dorks..."
-      className="text-gray-600 w-7/12 pl-10 pr-5 py-5 bg-transparent flex-1 focus:ring-0 focus:outline-none focus:border-transparent"
-    />
-    <Select onValueChange={(value) => handleCategoryChange(value)} defaultValue="All">
-      <SelectTrigger className="bg-transparent text-gray-600 border-none w-5/12 focus:ring-0 focus:outline-none">
-        <SelectValue placeholder="Select Category" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Categories</SelectLabel>
-          <SelectItem value="All">All Categories</SelectItem>
-          {categories.map((category, index) => (
-            <SelectItem key={index} value={category}>{category}</SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  </div>
-</form>
-
-
-
+          <form
+            className="flex items-center gap-2 w-full md:w-3/4 lg:w-1/2"
+          >
+            <div className="relative w-full flex items-center bg-white rounded-lg shadow-sm">
+              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+              <Input
+                value={search}
+                onChange={handleSearchChange}
+                placeholder="Search dorks..."
+                className="text-gray-600 w-7/12 pl-10 pr-5 py-5 bg-transparent flex-1 focus:ring-0 focus:outline-none focus:border-transparent"
+              />
+              <Select onValueChange={(value) => handleCategoryChange(value)} defaultValue="All">
+                <SelectTrigger className="bg-transparent text-gray-600 border-none w-5/12 focus:ring-0 focus:outline-none">
+                  <SelectValue placeholder="Select Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Categories</SelectLabel>
+                    <SelectItem value="All">All Categories</SelectItem>
+                    {categories.map((category, index) => (
+                      <SelectItem key={index} value={category}>{category}</SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+          </form>
           <div className="flex md:flex-row items-start justify-center gap-2">
             <p className="flex items-center justify-center gap-2">
               <SearchIcon /> Total: {dorks?.length ?? 0}

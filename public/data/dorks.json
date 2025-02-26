@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "2c13c1e2-8cea-4008-a9d5-32aebfd54f2c",
     "title": "SQL Error Messages",
     "description": "Locates websites with SQL error messages.",
     "content": "site:[TARGET] intext:\"SQL syntax near\" | intext:\"syntax error has occurred\"",
@@ -8,7 +8,7 @@
     "icon": "injection.svg"
   },
   {
-    "id": 2,
+    "id": "e29fe8c9-13b1-4fde-99e9-de2bcf41d8df",
     "title": "Exposed Database Files",
     "description": "Finds publicly accessible database files.",
     "content": "site:[TARGET] ext:sql | ext:db | ext:mdb",
@@ -16,7 +16,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 3,
+    "id": "9861c0cd-03a3-481a-affb-87b48951cf2f",
     "title": "Log Files",
     "description": "Identifies exposed log files that may contain sensitive information.",
     "content": "site:[TARGET] ext:log intext:\"password\" | intext:\"username\"",
@@ -24,7 +24,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 4,
+    "id": "336defb4-4a21-4945-b406-8df7f086c3cb",
     "title": "Admin Login Pages",
     "description": "Finds admin login portals for a target site.",
     "content": "site:[TARGET] inurl:admin | inurl:login | inurl:administrator",
@@ -32,7 +32,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 5,
+    "id": "22207e3c-0cec-4e8c-8b25-d5305a79beac",
     "title": "Exposed Backup Files",
     "description": "Finds publicly accessible backup files.",
     "content": "site:[TARGET] ext:bak | ext:old | ext:backup",
@@ -40,7 +40,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 6,
+    "id": "d4973748-5bbc-4146-88ed-329e1de81938",
     "title": "Open Directory Listings",
     "description": "Identifies directories with file listings enabled.",
     "content": "site:[TARGET] intitle:\"index of\"",
@@ -48,7 +48,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 7,
+    "id": "bd47e7b0-daaa-4b18-ae0e-31377041cce3",
     "title": "Publicly Exposed Git Repositories",
     "description": "Finds exposed .git directories which may contain sensitive source code.",
     "content": "site:[TARGET] inurl:\"/.git\"",
@@ -56,7 +56,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 8,
+    "id": "ba1b2196-5187-4c92-95b6-94e21385556b",
     "title": "Configuration Files",
     "description": "Finds exposed configuration files that may contain credentials.",
     "content": "site:[TARGET] ext:ini | ext:cfg | ext:env",
@@ -64,7 +64,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 9,
+    "id": "12850757-3e15-4402-8c20-2fb3a304be4a",
     "title": "PHP Info Pages",
     "description": "Finds phpinfo() pages which disclose server configuration details.",
     "content": "site:[TARGET] inurl:\"phpinfo.php\"",
@@ -72,7 +72,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 10,
+    "id": "d128b97b-241f-4ec7-833b-824aa692eda8",
     "title": "Exposed WordPress Configuration",
     "description": "Finds exposed wp-config.php files that may contain database credentials.",
     "content": "site:[TARGET] inurl:\"wp-config.php\" -intext:\"<?php\"",
@@ -80,7 +80,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 11,
+    "id": "aa875bb5-fa8a-46b8-9f1c-92879a5d97ff",
     "title": "Backup WordPress Files",
     "description": "Finds backup WordPress configuration files.",
     "content": "site:[TARGET] inurl:\"wp-config.php.bak\" | inurl:\"wp-config.php.old\"",
@@ -88,7 +88,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 12,
+    "id": "9b2cf6de-66f3-4f5b-9b50-c7a571fd443d",
     "title": "Exposed API Keys",
     "description": "Finds exposed API keys in JavaScript files.",
     "content": "site:[TARGET] ext:js intext:\"api_key\" | intext:\"apiToken\"",
@@ -96,7 +96,7 @@
     "icon": "incognito.svg"
   },
   {
-    "id": 13,
+    "id": "c8013e88-95f6-4aac-ad55-75c49981ab17",
     "title": "Git Configuration Files",
     "description": "Finds exposed git configuration files.",
     "content": "site:[TARGET] inurl:\".git/config\"",
@@ -104,7 +104,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 14,
+    "id": "a7c9edad-a4ec-49f5-a8b2-009f89c0b0a6",
     "title": "Exposed SSH Private Keys",
     "description": "Finds private SSH keys that should not be publicly accessible.",
     "content": "site:[TARGET] ext:txt | ext:key intext:\"BEGIN RSA PRIVATE KEY\"",
@@ -112,7 +112,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 15,
+    "id": "f0d319e3-c3be-4e58-841a-4bc050dface8",
     "title": "Exposed htpasswd Files",
     "description": "Finds exposed .htpasswd files that may contain password hashes.",
     "content": "site:[TARGET] inurl:\".htpasswd\"",
@@ -120,7 +120,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 16,
+    "id": "66b457d3-3eef-445c-adf1-7dfcae4c6e82",
     "title": "Exposed htaccess Files",
     "description": "Finds exposed .htaccess files which may reveal sensitive server configurations.",
     "content": "site:[TARGET] inurl:\".htaccess\"",
@@ -128,7 +128,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 17,
+    "id": "4f3d231f-dd6a-4d7d-952d-d42af46356a9",
     "title": "Joomla Configuration Files",
     "description": "Finds Joomla configuration files containing database credentials.",
     "content": "site:[TARGET] inurl:\"configuration.php-dist\"",
@@ -136,7 +136,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 18,
+    "id": "e1a942e7-4b16-4453-adff-a89371e2b06e",
     "title": "Drupal Settings Files",
     "description": "Finds Drupal settings.php files which may contain database credentials.",
     "content": "site:[TARGET] inurl:\"settings.php\"",
@@ -144,7 +144,7 @@
     "icon": "injection.svg"
   },
   {
-    "id": 19,
+    "id": "891ae2c8-868d-44fe-bb2f-c85c35cebc7a",
     "title": "Open Cameras",
     "description": "Finds publicly accessible security cameras.",
     "content": "site:[TARGET] inurl:\"view/view.shtml\"",
@@ -152,7 +152,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 20,
+    "id": "f761f9ba-3548-437b-a4e2-5118fa18b179",
     "title": "Exposed API Keys",
     "description": "Finds exposed API keys in JavaScript files.",
     "content": "site:[TARGET] ext:js intext:\"api_key\" | intext:\"apiToken\"",
@@ -160,7 +160,7 @@
     "icon": "incognito.svg"
   },
   {
-    "id": 21,
+    "id": "44402719-df7d-4dc7-8f15-e3cddb5dcc56",
     "title": "Publicly Accessible Apache Server Status",
     "description": "Finds publicly accessible Apache server-status pages.",
     "content": "site:[TARGET] inurl:\"server-status\"",
@@ -168,7 +168,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 22,
+    "id": "456ab54c-e433-4bc1-a6ae-29fad0aecb11",
     "title": "Exposed WebShells",
     "description": "Finds potentially uploaded webshells.",
     "content": "site:[TARGET] inurl:\"cmd.php\" | inurl:\"shell.php\" | inurl:\"backdoor\"",
@@ -176,7 +176,7 @@
     "icon": "injection.svg"
   },
   {
-    "id": 23,
+    "id": "7f310210-2268-4aef-b80d-3af6adc7c892",
     "title": "Exposed Firewall Configuration Files",
     "description": "Finds publicly available firewall configuration files.",
     "content": "site:[TARGET] ext:conf intext:\"firewall\"",
@@ -184,7 +184,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 24,
+    "id": "2a4f358d-b600-4727-bda6-f81e9c5fd9cf",
     "title": "Open Jenkins Dashboards",
     "description": "Finds exposed Jenkins CI/CD dashboards.",
     "content": "site:[TARGET] inurl:\"/jenkins\"",
@@ -192,7 +192,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 25,
+    "id": "3ffdae7b-de48-41f8-938f-cbecf07a1945",
     "title": "Open Kibana Dashboards",
     "description": "Finds exposed Kibana dashboards that might reveal sensitive logs.",
     "content": "site:[TARGET] inurl:\"/app/kibana\"",
@@ -200,7 +200,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 26,
+    "id": "15a37862-4e6b-4d2e-a945-9bf8d1f74def",
     "title": "Exposed AWS Credentials",
     "description": "Finds leaked AWS access keys in publicly accessible pages.",
     "content": "site:[TARGET] intext:\"AWS_ACCESS_KEY_ID\" | intext:\"AWS_SECRET_ACCESS_KEY\"",
@@ -208,7 +208,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 27,
+    "id": "f28dd67f-b2c1-41df-afe7-67aa92374c62",
     "title": "Publicly Accessible Google Drive Links",
     "description": "Finds publicly shared Google Drive links.",
     "content": "site:drive.google.com [TARGET]",
@@ -216,7 +216,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 28,
+    "id": "ec3babe5-e1c8-4251-ac3a-ea4a27af3459",
     "title": "Open FTP Servers",
     "description": "Finds publicly accessible FTP servers.",
     "content": "site:[TARGET] inurl:\"ftp://\"",
@@ -224,7 +224,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 29,
+    "id": "97f39a5c-0884-4c02-a1b9-9d8f67abff0a",
     "title": "Exposed Email Lists",
     "description": "Finds pages containing leaked email lists.",
     "content": "site:[TARGET] intext:\"@gmail.com\" | intext:\"@yahoo.com\" | intext:\"@outlook.com\"",
@@ -232,7 +232,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 30,
+    "id": "fda564d5-fce9-4aa0-af9e-a5a41c5eb5c7",
     "title": "Exposed Payment Data",
     "description": "Finds publicly available payment-related information.",
     "content": "site:[TARGET] intext:\"credit card number\" | intext:\"cvv\"",
@@ -240,7 +240,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 31,
+    "id": "d6b0ff20-6d79-4e2a-898d-f88de99a7112",
     "title": "Unsecured Google Calendar Events",
     "description": "Finds public Google Calendar events that may contain sensitive details.",
     "content": "site:calendar.google.com [TARGET]",
@@ -248,7 +248,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 32,
+    "id": "7f8e5ea3-bf3a-497b-a70b-3276e30ad04a",
     "title": "Open Trello Boards",
     "description": "Finds exposed Trello boards that may contain company data.",
     "content": "site:trello.com [TARGET]",
@@ -256,7 +256,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 33,
+    "id": "1cd24e83-3c48-4cb6-a829-f40615e0b973",
     "title": "Publicly Available Zoom Meeting Links",
     "description": "Finds exposed Zoom meeting links.",
     "content": "site:zoom.us [TARGET] inurl:\"/j/\"",
@@ -264,7 +264,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 34,
+    "id": "85ec1b1f-9450-4b75-b8dc-50d5487a78c8",
     "title": "Publicly Available WebEx Meetings",
     "description": "Finds exposed Cisco WebEx meeting links.",
     "content": "site:webex.com [TARGET] inurl:\"/meet\"",
@@ -272,7 +272,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 35,
+    "id": "a9fd9e4d-f67e-46c2-a14b-254b88225321",
     "title": "Exposed Error Logs",
     "description": "Finds publicly accessible error logs that may reveal sensitive data.",
     "content": "site:[TARGET] inurl:\"error.log\" | inurl:\"debug.log\"",
@@ -280,7 +280,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 36,
+    "id": "06771a7b-1a08-4b41-a755-4e36618005f2",
     "title": "Exposed DNS Configuration",
     "description": "Finds DNS zone files that might expose domain information.",
     "content": "site:[TARGET] inurl:\"/named.conf\" | inurl:\"/zone\"",
@@ -288,7 +288,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 37,
+    "id": "c2a38332-f2e5-4e36-b4b8-04553a91e469",
     "title": "Exposed SSL/TLS Private Keys",
     "description": "Finds leaked private keys for SSL/TLS encryption.",
     "content": "site:[TARGET] ext:key intext:\"BEGIN PRIVATE KEY\"",
@@ -296,7 +296,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 38,
+    "id": "bd8d679e-6d60-4d15-baf3-2b04703f3348",
     "title": "Exposed WordPress Debug Logs",
     "description": "Finds exposed debug.log files that might reveal sensitive WordPress information.",
     "content": "site:[TARGET] inurl:\"/wp-content/debug.log\"",
@@ -304,7 +304,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 39,
+    "id": "b6d07b23-5b61-4c75-864e-dab9332b5f74",
     "title": "Publicly Accessible phpMyAdmin Portals",
     "description": "Finds open phpMyAdmin login pages.",
     "content": "site:[TARGET] inurl:\"phpmyadmin\"",
@@ -312,7 +312,7 @@
     "icon": "incognito.svg"
   },
   {
-    "id": 40,
+    "id": "36145cd3-0712-4b51-83ea-4de6d96e1d6f",
     "title": "Exposed Internal Network Devices",
     "description": "Finds internal routers, switches, and cameras exposed to the internet.",
     "content": "site:[TARGET] inurl:\"/setup.cgi\" | inurl:\"/status.cgi\"",
@@ -320,7 +320,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 41,
+    "id": "bf8c9b25-69a7-49d7-913f-5ed02e763c2d",
     "title": "Exposed Jenkins Console Output",
     "description": "Finds publicly accessible Jenkins build logs that may contain sensitive information.",
     "content": "site:[TARGET] inurl:\"/job/\" inurl:\"/console\"",
@@ -328,7 +328,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 42,
+    "id": "0c938168-76cb-49eb-98c8-7221a6f81257",
     "title": "Exposed Docker Registries",
     "description": "Finds open Docker registries that may allow pulling of private images.",
     "content": "site:[TARGET] inurl:\"v2/_catalog\"",
@@ -336,7 +336,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 43,
+    "id": "c73f0767-9286-46b4-8334-2d451846418c",
     "title": "Publicly Accessible SonarQube Dashboards",
     "description": "Finds open SonarQube dashboards that may expose security vulnerabilities.",
     "content": "site:[TARGET] inurl:\"/sonarqube\" | inurl:\"/dashboard?id=\"",
@@ -344,7 +344,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 44,
+    "id": "f318e934-dc89-42a2-8421-26d42f601e4f",
     "title": "Exposed Firebase Databases",
     "description": "Finds publicly accessible Firebase database instances.",
     "content": "site:[TARGET] inurl:\"firebaseio.com\"",
@@ -352,7 +352,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 45,
+    "id": "ebdc36a5-b659-41a1-b066-39bc05a9efcc",
     "title": "Publicly Exposed Payment Gateway Logs",
     "description": "Finds payment gateway logs that may contain transaction data.",
     "content": "site:[TARGET] ext:log intext:\"payment\" | intext:\"transaction\"",
@@ -360,7 +360,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 46,
+    "id": "7e0634a5-d7e6-4af6-9f61-c5f6f23ae7eb",
     "title": "Exposed VPN Configuration Files",
     "description": "Finds VPN configuration files that may contain sensitive credentials.",
     "content": "site:[TARGET] ext:conf intext:\"vpn\"",
@@ -368,7 +368,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 47,
+    "id": "0d4f157e-3a6b-4e90-b76c-807ea1473452",
     "title": "Publicly Accessible NoSQL Databases",
     "description": "Finds open NoSQL databases such as MongoDB, CouchDB, or Elasticsearch.",
     "content": "site:[TARGET] inurl:\"_all_dbs\" | inurl:\"_cat/indices\"",
@@ -376,7 +376,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 48,
+    "id": "2840fc88-05cf-4de6-9e90-f2faed1099ed",
     "title": "Exposed AI Models and ML Training Data",
     "description": "Finds publicly accessible machine learning models and datasets.",
     "content": "site:[TARGET] inurl:\"/model\" | inurl:\"/dataset\"",
@@ -384,7 +384,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 49,
+    "id": "d5f4a31d-f9aa-4b96-94a3-72276328c99f",
     "title": "Publicly Accessible ERP/CRM Dashboards",
     "description": "Finds open ERP or CRM platforms that may expose business data.",
     "content": "site:[TARGET] inurl:\"/sap\" | inurl:\"/crm\" | inurl:\"/erp\"",
@@ -392,7 +392,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 50,
+    "id": "6e92b947-9867-414c-89aa-b5bb20f4d9a0",
     "title": "Exposed Remote Desktop Login Pages",
     "description": "Finds exposed RDP login portals.",
     "content": "site:[TARGET] inurl:\"/rdweb\" | inurl:\"/remote\"",
@@ -400,7 +400,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 51,
+    "id": "0f2a3b98-4b51-4b1f-94d7-76bb3a6ea3dc",
     "title": "Exposed SVN Repository",
     "description": "Finds publicly accessible Subversion (SVN) repositories containing source code.",
     "content": "site:[TARGET] inurl:\"/.svn/entries\"",
@@ -408,7 +408,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 52,
+    "id": "a34dfe79-6be0-4a2c-92fd-32a8f9f2c75f",
     "title": "Publicly Accessible Git Directories",
     "description": "Finds exposed .git directories that may contain source code or credentials.",
     "content": "site:[TARGET] inurl:\"/.git/\"",
@@ -416,7 +416,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 53,
+    "id": "b4b54d84-8d43-4e76-95c8-1db5ad963c8a",
     "title": "Open Confluence Pages",
     "description": "Finds publicly accessible Confluence pages that may contain internal documentation.",
     "content": "site:[TARGET] inurl:\"/pages/viewpage.action\"",
@@ -424,7 +424,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 54,
+    "id": "de85aa92-9b42-4817-bfbb-90763b235c89",
     "title": "Publicly Exposed JWT Tokens",
     "description": "Finds JWT tokens leaked in public pages.",
     "content": "site:[TARGET] intext:\"eyJ\" | intext:\"jwt\"",
@@ -432,7 +432,7 @@
     "icon": "incognito.svg"
   },
   {
-    "id": 55,
+    "id": "99c2f9d5-6fc1-41a5-99ee-dc3771267f88",
     "title": "Exposed PHP Info Pages",
     "description": "Finds publicly accessible phpinfo pages that may disclose server details.",
     "content": "site:[TARGET] inurl:\"phpinfo.php\"",
@@ -440,7 +440,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 56,
+    "id": "3e3a4de5-7a85-4638-ae36-7e9cfe5829d3",
     "title": "Publicly Available htpasswd Files",
     "description": "Finds exposed .htpasswd files containing hashed passwords.",
     "content": "site:[TARGET] inurl:\".htpasswd\"",
@@ -448,7 +448,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 57,
+    "id": "efc157a1-1b1f-4b0a-8293-36cf7030f13b",
     "title": "Exposed Backup Files",
     "description": "Finds publicly accessible backup files that may contain sensitive data.",
     "content": "site:[TARGET] ext:bak | ext:backup | ext:old",
@@ -456,7 +456,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 58,
+    "id": "2b5f64cc-8e40-45c7-b0de-4030d64b9c08",
     "title": "Publicly Accessible WebEx Recordings",
     "description": "Finds exposed Cisco WebEx meeting recordings.",
     "content": "site:webex.com TARGET inurl:\"/recording\"",
@@ -464,7 +464,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 59,
+    "id": "c5b939c1-2c96-42e2-923b-4d684c7634b2",
     "title": "Exposed MongoDB Configuration Files",
     "description": "Finds MongoDB configuration files that may contain database credentials.",
     "content": "site:[TARGET] ext:conf intext:\"mongodb\"",
@@ -472,7 +472,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 60,
+    "id": "7d2df3a4-4ae2-4a2f-bb77-f48eac85dc86",
     "title": "Exposed API Logs",
     "description": "Finds public API logs that may contain sensitive data.",
     "content": "site:[TARGET] ext:log intext:\"api_key\" | intext:\"secret\"",
@@ -480,7 +480,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 61,
+    "id": "fdb869bb-9c51-4c02-9c62-6fd3ea1e3a2f",
     "title": "Exposed WordPress Configuration File",
     "description": "Finds publicly accessible WordPress wp-config.php files.",
     "content": "site:[TARGET] inurl:\"wp-config.php\"",
@@ -488,7 +488,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 62,
+    "id": "61a4c6b5-df62-45d7-b3f4-1077d9a52665",
     "title": "Exposed Environment Variables",
     "description": "Finds publicly exposed .env files that may contain API keys and credentials.",
     "content": "site:[TARGET] inurl:\".env\"",
@@ -496,7 +496,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 63,
+    "id": "8927f9a4-bc23-49d3-b0e7-dc9b2f30ea93",
     "title": "Publicly Accessible Web Shells",
     "description": "Finds open web shells that may allow remote command execution.",
     "content": "site:[TARGET] inurl:\"/wso.php\" | inurl:\"/c99.php\" | inurl:\"/r57.php\"",
@@ -504,7 +504,7 @@
     "icon": "injection.svg"
   },
   {
-    "id": 64,
+    "id": "da5a09e6-cc02-42b3-8f8e-f6fa77dcd5d4",
     "title": "Exposed Microsoft Office Documents",
     "description": "Finds publicly accessible Microsoft Office documents that may contain sensitive information.",
     "content": "site:[TARGET] ext:doc | ext:docx | ext:xls | ext:xlsx | ext:ppt | ext:pptx",
@@ -512,7 +512,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 65,
+    "id": "eb4989fd-f909-41cd-872b-7c6447866d69",
     "title": "Publicly Accessible Private Keys",
     "description": "Finds private keys that may be accidentally exposed.",
     "content": "site:[TARGET] ext:key | ext:pem | ext:ppk intext:\"PRIVATE KEY\"",
@@ -520,7 +520,7 @@
     "icon": "lock.svg"
   },
   {
-    "id": 66,
+    "id": "4498e70e-cf13-4e50-a741-993cc0d9e84c",
     "title": "Exposed Payment Transactions",
     "description": "Finds transaction details and financial records.",
     "content": "site:[TARGET] intext:\"transaction ID\" | intext:\"payment successful\"",
@@ -528,7 +528,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 67,
+    "id": "26b70ec5-6509-4f30-b2e4-59b4c5b1bdf7",
     "title": "Publicly Accessible API Endpoints",
     "description": "Finds exposed API endpoints that might be publicly accessible.",
     "content": "site:[TARGET] inurl:\"/api/\" | inurl:\"/v1/\"",
@@ -536,7 +536,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 68,
+    "id": "bbda9787-41a7-467f-9884-bc84ff961d77",
     "title": "Exposed Database Dumps",
     "description": "Finds SQL dump files that may contain sensitive database contents.",
     "content": "site:[TARGET] ext:sql | ext:db | ext:sqlite",
@@ -544,7 +544,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 69,
+    "id": "a2e1f8c0-34b4-4c52-bcb4-7f736457f715",
     "title": "Publicly Accessible Log Files",
     "description": "Finds publicly accessible logs that may contain debug data, passwords, or API keys.",
     "content": "site:[TARGET] ext:log",
@@ -552,7 +552,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 70,
+    "id": "c18be4e2-0dc1-4644-92d3-4e8d0fa47f6a",
     "title": "Exposed Elasticsearch Instances",
     "description": "Finds open Elasticsearch database instances that may allow unauthorized access.",
     "content": "site:[TARGET] inurl:\"_search\" | inurl:\"_cat/indices\"",
@@ -560,7 +560,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 71,
+    "id": "3a5e3893-9b45-4b1e-a9be-62f91f912c4c",
     "title": "Public Bug Bounty Policy Pages",
     "description": "Finds public bug bounty policy pages on self-hosted websites.",
     "content": "inurl:\"bug-bounty\" | inurl:\"security.txt\"",
@@ -568,7 +568,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 72,
+    "id": "7a349f64-8360-404c-8aa0-3a6e7600f3e4",
     "title": "Disclosed Bug Reports",
     "description": "Finds publicly available bug reports or security disclosures.",
     "content": "inurl:\"/reports/\" | intext:\"security vulnerability\"",
@@ -576,7 +576,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 73,
+    "id": "d0147b3b-5374-4327-8a4a-303ed78728de",
     "title": "Bug Bounty Program Pages",
     "description": "Locates web pages where companies describe their bug bounty programs.",
     "content": "intext:\"bug bounty\" OR intext:\"security research program\"",
@@ -584,7 +584,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 74,
+    "id": "2cbe9d6a-9e69-4b98-a2a1-0b53d69e77f6",
     "title": "Bug Bounty Submission Forms",
     "description": "Finds submission forms for reporting security vulnerabilities.",
     "content": "inurl:\"/report-bug\" | inurl:\"/submit-vulnerability\"",
@@ -592,7 +592,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 75,
+    "id": "4e9fdd54-327e-48c1-a6df-7b2995dbe3f6",
     "title": "Public Security Hall of Fame",
     "description": "Finds security hall of fame pages that list bug bounty contributors.",
     "content": "inurl:\"/hall-of-fame\" | inurl:\"/security-researchers\"",
@@ -600,7 +600,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 76,
+    "id": "74af2f9a-76ef-45cb-bb5b-d6c1ff89e690",
     "title": "Bug Bounty Leaderboards",
     "description": "Finds pages displaying top contributors to a bug bounty program.",
     "content": "inurl:\"/leaderboard\" | intext:\"top security researchers\"",
@@ -608,7 +608,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 77,
+    "id": "ebc4b823-1bb1-4b5e-9e4c-c50b9c3129a6",
     "title": "Public Vulnerability Tracker",
     "description": "Finds publicly accessible security issue tracking pages.",
     "content": "inurl:\"/vulnerabilities\" | inurl:\"/security-issues\"",
@@ -616,7 +616,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 78,
+    "id": "d172eb21-7eb2-4f27-b658-4645ff3c599d",
     "title": "Bug Bounty Disclosure Pages",
     "description": "Finds self-hosted websites where bug bounty disclosures are published.",
     "content": "inurl:\"/disclosures\" | intext:\"bug bounty report\"",
@@ -624,7 +624,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 79,
+    "id": "3e50e3cf-06a7-41b5-bf7d-ec74c3ac9318",
     "title": "Public PGP Keys for Reporting Bugs",
     "description": "Finds published PGP keys used for encrypted vulnerability disclosure.",
     "content": "intext:\"-----BEGIN PGP PUBLIC KEY BLOCK-----\"",
@@ -632,7 +632,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 80,
+    "id": "0e837ada-f445-4ff7-99d7-36e5f8b16180",
     "title": "Security Contact Email Addresses",
     "description": "Finds email addresses for responsible disclosure and bug bounty reports.",
     "content": "intext:\"security@\" | intext:\"vuln@\"",
@@ -640,7 +640,7 @@
     "icon": "rocket.svg"
   },
   {
-    "id": 81,
+    "id": "e4e47eb2-b74f-4406-9e8d-2dd5a90a9ff8",
     "title": "Exposed User Profile IDs",
     "description": "Finds URLs exposing numeric user IDs, which may indicate IDOR vulnerabilities.",
     "content": "site:[TARGET] inurl:\"profile.php?id=\" | inurl:\"user?id=\" | inurl:\"member?id=\"",
@@ -648,7 +648,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 82,
+    "id": "a9a1b2de-5d3c-4b93-b448-719c441f89b2",
     "title": "Ticketing Systems with IDOR Risk",
     "description": "Finds ticketing portals where IDs might be incremented to access other users’ data.",
     "content": "site:[TARGET] inurl:\"ticket?id=\" | inurl:\"case?id=\" | inurl:\"support?id=\"",
@@ -656,7 +656,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 83,
+    "id": "7fa32491-7c88-4603-9ff4-b9a91125f8e3",
     "title": "Order Invoice Access",
     "description": "Finds order confirmation pages that might allow IDOR-based order access.",
     "content": "site:[TARGET] inurl:\"order?id=\" | inurl:\"invoice?id=\" | inurl:\"purchase?id=\"",
@@ -664,7 +664,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 84,
+    "id": "f0929823-0f2e-4c7a-8cd4-46f158bc9ee5",
     "title": "Exposed Private Messages or Chats",
     "description": "Identifies private messaging systems where message IDs might be predictable.",
     "content": "site:[TARGET] inurl:\"message?id=\" | inurl:\"chat?id=\" | inurl:\"pm?id=\"",
@@ -672,7 +672,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 85,
+    "id": "b89a23d3-fbd4-450d-98f6-287fc3fd7a7d",
     "title": "Unprotected File Downloads",
     "description": "Finds file download endpoints that might allow IDOR-based access to unauthorized files.",
     "content": "site:[TARGET] inurl:\"download.php?file=\" | inurl:\"getfile?id=\" | inurl:\"document?id=\"",
@@ -680,7 +680,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 86,
+    "id": "1a5e3b92-d9b4-4b39-b7c4-f3f71f013f82",
     "title": "Exposed Billing Statements",
     "description": "Finds billing-related pages that might expose sensitive financial documents via IDOR.",
     "content": "site:[TARGET] inurl:\"billing?id=\" | inurl:\"statement?id=\" | inurl:\"accounting?id=\"",
@@ -688,7 +688,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 87,
+    "id": "4cf6c8d5-3c85-4d6f-bf27-7ad9be1273af",
     "title": "Admin Panel with ID Reference",
     "description": "Finds admin panel URLs where ID-based access might be possible.",
     "content": "site:[TARGET] inurl:\"admin?id=\" | inurl:\"dashboard?user=\"",
@@ -696,7 +696,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 88,
+    "id": "c7b12a68-45d9-41f3-bf68-29c03be3156d",
     "title": "Exposed Session Identifiers",
     "description": "Finds URLs leaking session tokens that could be exploited for IDOR.",
     "content": "site:[TARGET] inurl:\"session?id=\" | inurl:\"auth_token=\"",
@@ -704,7 +704,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 89,
+    "id": "45d8b69b-38e6-4b68-83c5-21f1a5fbc632",
     "title": "Vulnerable API Endpoints",
     "description": "Finds API endpoints with predictable user or object identifiers.",
     "content": "site:[TARGET] inurl:\"/api/v1/user?id=\" | inurl:\"/api/v1/orders?id=\"",
@@ -712,7 +712,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 90,
+    "id": "e4927a34-8546-4f27-8eb4-3b6e7c01d3e2",
     "title": "IDOR in Medical Records",
     "description": "Finds healthcare-related systems where patient records may be exposed via IDOR.",
     "content": "site:[TARGET] inurl:\"patient?id=\" | inurl:\"record?id=\" | inurl:\"medical?id=\"",
@@ -720,7 +720,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 91,
+    "id": "a563b9f1-0bd9-4cb5-924b-6e9278df6c1a",
     "title": "Potentially Sensitive Directory Listings",
     "description": "Finds directories that may contain sensitive information, misconfigurations, or exposed files.",
     "content": "inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php site:[TARGET]",
@@ -728,7 +728,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 92,
+    "id": "37ebf19b-bb2f-4d12-8d2a-5fa847c5e9bc",
     "title": "Command Injection Risk",
     "description": "Finds potential command execution parameters that could be exploited.",
     "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
@@ -736,7 +736,7 @@
     "icon": "injection.svg"
   },
   {
-    "id": 93,
+    "id": "df7a2c83-60b9-4de9-91d8-7f1a4b05e1df",
     "title": "Error and Debug Information Exposure",
     "description": "Finds error pages that might reveal sensitive server or application details.",
     "content": "inurl:'error' | intitle:'exception' | intitle:'failure' | intitle:'server at' | inurl:exception | 'database error' | 'SQL syntax' | 'undefined index' | 'unhandled exception' | 'stack trace' site:[TARGET]",
@@ -744,7 +744,7 @@
     "icon": "log.svg"
   },
   {
-    "id": 94,
+    "id": "6c1e8493-5df4-4622-bb71-91e3827db6ab",
     "title": "Exposed API Endpoints",
     "description": "Finds public API endpoints that might be accessible without authentication.",
     "content": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
@@ -752,7 +752,7 @@
     "icon": "access.svg"
   },
   {
-    "id": 95,
+    "id": "f18b23c7-ae71-45e6-bcf1-06c9d3e4f628",
     "title": "Open Redirect Vulnerabilities",
     "description": "Finds URLs that could be vulnerable to open redirect attacks.",
     "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
@@ -760,7 +760,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 96,
+    "id": "d7928b43-92f7-4e6b-8d92-6d3e5f1a4c89",
     "title": "Exposed Configuration and Backup Files",
     "description": "Finds sensitive configuration and backup files that might contain credentials or internal data.",
     "content": "site:[TARGET] ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
@@ -768,7 +768,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 97,
+    "id": "a924b5f1-0e4d-4bc7-96f2-d9b1e38c52a1",
     "title": "Exposed Search Query Parameters",
     "description": "Finds search endpoints that could be vulnerable to injection attacks.",
     "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
@@ -776,7 +776,7 @@
     "icon": "injection.svg"
   },
   {
-    "id": 98,
+    "id": "5d7b6e8f-29c1-4203-9db5-6a47e23bc491",
     "title": "Cloud Storage Exposure",
     "description": "Finds publicly accessible cloud storage locations where sensitive data might be exposed.",
     "content": "site:s3.amazonaws.com '[TARGET]' | site:blob.core.windows.net '[TARGET]' | site:googleapis.com '[TARGET]' | site:drive.google.com '[TARGET]' | site:dev.azure.com '[TARGET]'",
@@ -784,7 +784,7 @@
     "icon": "config.svg"
   },
   {
-    "id": 99,
+    "id": "e481f92b-37d8-4a1d-b95c-21d5e8c7a20b",
     "title": "LFI and Directory Traversal Risk",
     "description": "Finds file inclusion parameters that might be vulnerable to LFI attacks.",
     "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
@@ -792,11 +792,83 @@
     "icon": "config.svg"
   },
   {
-    "id": 100,
+    "id": "b3f8a56e-91d5-4ea6-a3e9-1b7c5e0c4f1a",
+    "title": "Potentially Sensitive Directory Listings",
+    "description": "Finds directories that may contain sensitive information, misconfigurations, or exposed files.",
+    "content": "inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php site:[TARGET]",
+    "category": "Security Misconfiguration",
+    "icon": "config.svg"
+  },
+  {
+    "id": "8f6c23d2-f274-44a1-9e2c-9dc18c6b7b92",
+    "title": "Command Injection Risk",
+    "description": "Finds potential command execution parameters that could be exploited.",
+    "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
+    "category": "Injection",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "fa35d8c7-6482-402e-9d64-29db72b40e7c",
+    "title": "Cloud Storage Exposure",
+    "description": "Finds publicly accessible cloud storage locations where sensitive data might be exposed.",
+    "content": "site:s3.amazonaws.com '[TARGET]' | site:blob.core.windows.net '[TARGET]' | site:googleapis.com '[TARGET]' | site:drive.google.com '[TARGET]' | site:dev.azure.com '[TARGET]'",
+    "category": "Security Misconfiguration",
+    "icon": "config.svg"
+  },
+  {
+    "id": "44b9eae6-9e24-49a0-9209-d50e3a84944a",
+    "title": "Exposed API Endpoints",
+    "description": "Finds public API endpoints that might be accessible without authentication.",
+    "content": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+    "category": "Broken Access Control",
+    "icon": "access.svg"
+  },
+  {
+    "id": "d7e88e92-cd6d-40c4-a2d4-9059e2f2560e",
+    "title": "Error and Debug Information Exposure",
+    "description": "Finds error pages that might reveal sensitive server or application details.",
+    "content": "inurl:'error' | intitle:'exception' | intitle:'failure' | intitle:'server at' | inurl:exception | 'database error' | 'SQL syntax' | 'undefined index' | 'unhandled exception' | 'stack trace' site:[TARGET]",
+    "category": "Security Logging & Monitoring Failures",
+    "icon": "log.svg"
+  },
+  {
+    "id": "c59164a8-ff9d-4ea1-8c2c-2d38f526f7ad",
+    "title": "Exposed Configuration and Backup Files",
+    "description": "Finds sensitive configuration and backup files that might contain credentials or internal data.",
+    "content": "site:'[TARGET]' ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+    "category": "Security Misconfiguration",
+    "icon": "config.svg"
+  },
+  {
+    "id": "9a7e49b0-45ea-4a5d-80e3-243f6dfb3e36",
+    "title": "Exposed Search Query Parameters",
+    "description": "Finds search endpoints that could be vulnerable to injection attacks.",
+    "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
+    "category": "Injection",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "f248b82e-4a17-4039-8b42-b9b50d62c841",
+    "title": "Open Redirect Vulnerabilities",
+    "description": "Finds URLs that could be vulnerable to open redirect attacks.",
+    "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
+    "category": "Security Misconfiguration",
+    "icon": "config.svg"
+  },
+  {
+    "id": "3f94a1f2-1d74-4973-bc55-9f29e3cd4b63",
+    "title": "LFI and Directory Traversal Risk",
+    "description": "Finds file inclusion parameters that might be vulnerable to LFI attacks.",
+    "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
+    "category": "Security Misconfiguration",
+    "icon": "config.svg"
+  },
+  {
+    "id": "50e58b12-88b0-4c04-9d51-3fef6e3d9a46",
     "title": "Parameter-Based IDOR Detection",
     "description": "Finds common URL parameters that might be vulnerable to IDOR attacks.",
     "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
-    "category": "Broken Access Control (A01:2021)",
+    "category": "Broken Access Control",
     "icon": "access.svg"
   }
 ]
