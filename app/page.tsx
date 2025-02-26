@@ -79,12 +79,10 @@ export default function Home() {
         dork.category.toLowerCase().includes(search.toLowerCase());
 
       const matchesCategory =
-        selectedCategory === "" || dork.category.toLowerCase() === selectedCategory.toLowerCase();
+        selectedCategory === "" || selectedCategory === "All" || dork.category.toLowerCase() === selectedCategory.toLowerCase();
 
       return matchesSearch && matchesCategory;
     });
-    console.log(selectedCategory);
-    console.log("Filtered dorks:", results);
     return results;
   }, [search, dorks, selectedCategory]);
 
@@ -117,7 +115,6 @@ export default function Home() {
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
-    console.log("Selected category:", value);
   };
 
   return (
@@ -165,6 +162,7 @@ export default function Home() {
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Categories</SelectLabel>
+                  <SelectItem value="All">All Categories</SelectItem>
                   {categories.map((category, index) => (
                     <SelectItem key={index} value={category}>{category}</SelectItem>
                   ))}
