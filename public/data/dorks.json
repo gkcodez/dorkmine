@@ -870,5 +870,653 @@
     "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
     "category": "Broken Access Control",
     "icon": "access.svg"
+  },
+  {
+    "id": "3f4a92b2-0a7b-4b6b-b50c-4f3a2e8b9b4d",
+    "title": "Exposed API Endpoints",
+    "description": "Finds publicly accessible API endpoints that may expose sensitive data.",
+    "content": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c7d6b451-3245-464a-9a93-2a3a5b1a0e6c",
+    "title": "Exposed Log and Config Files",
+    "description": "Finds exposed log, configuration, and backup files that may contain sensitive information.",
+    "content": "site:'[TARGET]' ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "9df1c69d-94d1-4c4b-8e43-f75f567a3b14",
+    "title": "Sensitive Directories and Files",
+    "description": "Finds directories and files that could contain sensitive information.",
+    "content": "inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "4ae3bdb7-5c3b-4c58-a14e-8c8fd7d45f0f",
+    "title": "Error Messages and Debug Information",
+    "description": "Finds error messages that may disclose system details or vulnerabilities.",
+    "content": "inurl:'error' | intitle:'exception' | intitle:'failure' | intitle:'server at' | inurl:exception | 'database error' | 'SQL syntax' | 'undefined index' | 'unhandled exception' | 'stack trace' site:[TARGET]",
+    "category": "Security Logging & Monitoring Failures (A09:2021)",
+    "icon": "log.svg"
+  },
+  {
+    "id": "b82f85c4-e2d9-478b-b5cc-bfd62e0dcdcf",
+    "title": "Exposed Search Parameters",
+    "description": "Finds search parameters that could be exploited for injection attacks.",
+    "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "50bc3e9f-b97b-43c9-9e83-78fd9b7192c5",
+    "title": "Open Redirects and URL Manipulation",
+    "description": "Finds potential open redirect vulnerabilities.",
+    "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "3cf23b45-61cf-4981-91f5-8a4569d80f72",
+    "title": "IDOR and Enumeration Parameters",
+    "description": "Finds parameters that may be vulnerable to IDOR or enumeration attacks.",
+    "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": "9e07cf73-f78b-4b72-bd67-5a07e2b0dd4a",
+    "title": "Potentially Dangerous URL Parameters",
+    "description": "Finds parameters that could lead to RFI, LFI, or other vulnerabilities.",
+    "content": "inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:[TARGET]",
+    "category": "Insecure Design (A04:2021)",
+    "icon": "design.svg"
+  },
+  {
+    "id": "2d9e3e44-74b2-4611-a4f3-27337b9d7e7a",
+    "title": "File Inclusion and Directory Traversal",
+    "description": "Finds parameters that could lead to local or remote file inclusion vulnerabilities.",
+    "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
+    "category": "Insecure Design (A04:2021)",
+    "icon": "design.svg"
+  },
+  {
+    "id": "5e07fd92-4c5e-4aef-8a07-b01a5a6cd90b",
+    "title": "Command Execution Parameters",
+    "description": "Finds parameters that could be vulnerable to command injection attacks.",
+    "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "3f4a92b2-0a7b-4b6b-b50c-4f3a2e8b9b4d",
+    "title": "Exposed API Endpoints",
+    "description": "Finds publicly accessible API endpoints that may expose sensitive data.",
+    "content": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c7d6b451-3245-464a-9a93-2a3a5b1a0e6c",
+    "title": "Exposed Log and Config Files",
+    "description": "Finds exposed log, configuration, and backup files that may contain sensitive information.",
+    "content": "site:'[TARGET]' ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "9df1c69d-94d1-4c4b-8e43-f75f567a3b14",
+    "title": "Sensitive Directories and Files",
+    "description": "Finds directories and files that could contain sensitive information.",
+    "content": "inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "4ae3bdb7-5c3b-4c58-a14e-8c8fd7d45f0f",
+    "title": "Error Messages and Debug Information",
+    "description": "Finds error messages that may disclose system details or vulnerabilities.",
+    "content": "inurl:'error' | intitle:'exception' | intitle:'failure' | intitle:'server at' | inurl:exception | 'database error' | 'SQL syntax' | 'undefined index' | 'unhandled exception' | 'stack trace' site:[TARGET]",
+    "category": "Security Logging & Monitoring Failures (A09:2021)",
+    "icon": "log.svg"
+  },
+  {
+    "id": "b82f85c4-e2d9-478b-b5cc-bfd62e0dcdcf",
+    "title": "Exposed Search Parameters",
+    "description": "Finds search parameters that could be exploited for injection attacks.",
+    "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "50bc3e9f-b97b-43c9-9e83-78fd9b7192c5",
+    "title": "Open Redirects and URL Manipulation",
+    "description": "Finds potential open redirect vulnerabilities.",
+    "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "3cf23b45-61cf-4981-91f5-8a4569d80f72",
+    "title": "IDOR and Enumeration Parameters",
+    "description": "Finds parameters that may be vulnerable to IDOR or enumeration attacks.",
+    "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": "9e07cf73-f78b-4b72-bd67-5a07e2b0dd4a",
+    "title": "Potentially Dangerous URL Parameters",
+    "description": "Finds parameters that could lead to RFI, LFI, or other vulnerabilities.",
+    "content": "inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:[TARGET]",
+    "category": "Insecure Design (A04:2021)",
+    "icon": "design.svg"
+  },
+  {
+    "id": "2d9e3e44-74b2-4611-a4f3-27337b9d7e7a",
+    "title": "File Inclusion and Directory Traversal",
+    "description": "Finds parameters that could lead to local or remote file inclusion vulnerabilities.",
+    "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
+    "category": "Insecure Design (A04:2021)",
+    "icon": "design.svg"
+  },
+  {
+    "id": "5e07fd92-4c5e-4aef-8a07-b01a5a6cd90b",
+    "title": "Command Execution Parameters",
+    "description": "Finds parameters that could be vulnerable to command injection attacks.",
+    "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "d1e2a7c3-5b6f-4e99-97d4-432bc3b4e916",
+    "title": "Exposed AWS S3 Buckets",
+    "description": "Finds publicly accessible Amazon S3 storage buckets that may contain sensitive data.",
+    "content": "site:s3.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a5c8d73b-9e1f-497c-83b4-02cfe3897b59",
+    "title": "Exposed Azure Blob Storage",
+    "description": "Finds publicly accessible Microsoft Azure Blob storage containers.",
+    "content": "site:blob.core.windows.net '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c9d49e0a-1f28-4bda-96ef-529c8c597b2e",
+    "title": "Exposed Google Cloud Storage",
+    "description": "Finds publicly accessible Google Cloud Storage buckets.",
+    "content": "site:googleapis.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b14e6c3d-6bfa-4f1d-a48f-7cd6b27e9b47",
+    "title": "Public Google Drive Files",
+    "description": "Finds publicly accessible files shared via Google Drive.",
+    "content": "site:drive.google.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "8f3d2b7a-456c-40b5-b5b9-0e72b3fadc84",
+    "title": "Exposed DevOps Repositories",
+    "description": "Finds publicly accessible Azure DevOps repositories.",
+    "content": "site:dev.azure.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e1f6a4d5-2c9b-41d8-93b5-6a7f91d57f3c",
+    "title": "Exposed OneDrive Files",
+    "description": "Finds publicly shared files on Microsoft OneDrive.",
+    "content": "site:onedrive.live.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "3ac8e4d1-7a6f-49b2-b4a6-9c75b7d8c37e",
+    "title": "Exposed DigitalOcean Spaces",
+    "description": "Finds publicly accessible DigitalOcean Spaces storage.",
+    "content": "site:digitaloceanspaces.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "5d47f1a8-29e6-4c4a-a84f-6c83b7c2f9d3",
+    "title": "Exposed Amazon S3 (Alternate Region)",
+    "description": "Finds publicly accessible S3 buckets hosted in external AWS regions.",
+    "content": "site:s3-external-1.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "f3b9d4e7-2a64-478f-89b2-0a7c3b1e5c4d",
+    "title": "Exposed Dualstack S3 Buckets",
+    "description": "Finds publicly accessible S3 buckets using dual-stack endpoints.",
+    "content": "site:s3.dualstack.us-east-1.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "2e7f9c84-3b5a-49d1-98f7-6b8d2e3a1c7f",
+    "title": "Public Dropbox File Shares",
+    "description": "Finds public file shares on Dropbox.",
+    "content": "site:dropbox.com/s '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b82d4a17-93e5-4a9a-a32f-64e7c8f9d5b1",
+    "title": "Publicly Shared Box.com Files",
+    "description": "Finds publicly shared files on Box.com.",
+    "content": "site:box.com/s '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c5a91f3e-7b2f-46d4-bf6c-9d38e2a47c5f",
+    "title": "Exposed Google Docs Files",
+    "description": "Finds publicly accessible Google Docs documents.",
+    "content": "site:docs.google.com inurl:'/d/' '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e37b1a6f-49c5-4e2a-87f9-d2b8c4e51f8a",
+    "title": "Exposed JFrog Repositories",
+    "description": "Finds publicly accessible JFrog Artifactory repositories.",
+    "content": "site:jfrog.io '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a91e3c75-6b2f-4d48-94f7-52e3b89c5a4d",
+    "title": "Exposed Firebase Databases",
+    "description": "Finds publicly accessible Firebase databases.",
+    "content": "site:firebaseio.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "7c8b2a5d-3f4e-49a1-b8c5-2e9d17f63c7a",
+    "title": "Exposed Pastebin Entries",
+    "description": "Finds public Pastebin posts that may contain sensitive information.",
+    "content": "site:pastebin.com '[TARGET]'",
+    "category": "Software and Data Integrity Failures (A08:2021)",
+    "icon": "software.svg"
+  },
+  {
+    "id": "f49c7a5d-3b8e-41a2-96c7-5d2e1f83c9a7",
+    "title": "Public JSFiddle Snippets",
+    "description": "Finds public JSFiddle code snippets that may expose credentials or sensitive logic.",
+    "content": "site:jsfiddle.net '[TARGET]'",
+    "category": "Software and Data Integrity Failures (A08:2021)",
+    "icon": "software.svg"
+  },
+  {
+    "id": "a2e7d9c8-3b4f-49a1-97c5-6d1f82e5c79a",
+    "title": "Public CodeBeautify Entries",
+    "description": "Finds publicly accessible CodeBeautify entries that may contain sensitive data.",
+    "content": "site:codebeautify.org '[TARGET]'",
+    "category": "Software and Data Integrity Failures (A08:2021)",
+    "icon": "software.svg"
+  },
+  {
+    "id": "c5f9a7b2-6d8e-4a1c-83b9-2f47d1e5a3c7",
+    "title": "Exposed CodePen Snippets",
+    "description": "Finds public CodePen code snippets that may expose credentials or sensitive logic.",
+    "content": "site:codepen.io '[TARGET]'",
+    "category": "Software and Data Integrity Failures (A08:2021)",
+    "icon": "software.svg"
+  },
+  {
+    "id": "e9b7d5c2-4a3f-49a1-86c5-2d8e17f3c9a7",
+    "title": "Exposed API Documentation",
+    "description": "Finds publicly accessible API documentation that may reveal internal API endpoints.",
+    "content": "inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:'[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "7c2f9d8a-5b3e-41a1-97c5-6d1f82e5c7a4",
+    "title": "Public OpenBugBounty Reports",
+    "description": "Finds publicly disclosed vulnerability reports on Open Bug Bounty.",
+    "content": "site:openbugbounty.org inurl:reports intext:'[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c3a7e5d9-2b4f-41a1-86c5-7d2e19f3a8c7",
+    "title": "Public Google Groups Discussions",
+    "description": "Finds discussions in public Google Groups that may contain sensitive information.",
+    "content": "site:groups.google.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b9e7d5c2-4a3f-49a1-86c5-2d8e17f3c9b7",
+    "title": "Exposed File Upload Forms",
+    "description": "Finds publicly accessible file upload forms on a target domain.",
+    "content": "site:[TARGET] 'choose file'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "d5c2b8a7-3f4e-49a1-97c5-6d1f82e5c79a",
+    "title": "Exposed Login Pages",
+    "description": "Finds login pages that may be publicly accessible.",
+    "content": "inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:secure site:[TARGET]",
+    "category": "Identification and Authentication Failures (A07:2021)",
+    "icon": "user.svg"
+  },
+  {
+    "id": "e9b7d5c2-4a3f-49a1-86c5-2d8e17f3c9a7",
+    "title": "Exposed Development Environments",
+    "description": "Finds staging, testing, or sandbox environments that may be exposed.",
+    "content": "inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a7c5d8e9-2b4f-49a1-96c5-7d2e19f3a8c7",
+    "title": "Exposed Documents and Spreadsheets",
+    "description": "Finds publicly accessible documents, spreadsheets, and presentations.",
+    "content": "site:[TARGET] ext:txt | ext:pdf | ext:xml | ext:xls | ext:xlsx | ext:ppt | ext:pptx | ext:doc | ext:docx",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c2b7d5e9-4a3f-49a1-86c5-2d8e17f3c9a7",
+    "title": "Confidential Information Disclosure",
+    "description": "Finds documents labeled as confidential or internal use only.",
+    "content": "intext:'confidential' | intext:'Not for Public Release' | intext:'internal use only' | intext:'do not distribute'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "d7a5c8e9-3b4f-49a1-97c5-6d1f82e5c79a",
+    "title": "Exposed Email and Password Parameters",
+    "description": "Finds URLs that may contain email, password, or secret parameters in GET requests.",
+    "content": "inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e3b7d5a2-4c8f-49a1-96c5-2d7e19f3c9a7",
+    "title": "Exposed Query Strings",
+    "description": "Finds URLs with query parameters that may expose sensitive information.",
+    "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b5d7c2e9-3a4f-49a1-87c5-6d1f82e5c79a",
+    "title": "Potential Open Redirects",
+    "description": "Finds URLs that may be vulnerable to open redirection attacks.",
+    "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a3c7d5e9-4b8f-49a1-97c5-2d7e19f3c9a7",
+    "title": "SQL Injection Prone URLs",
+    "description": "Finds URLs with parameters that may be vulnerable to SQL injection.",
+    "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "f8a3d9c2-5b6e-49a1-84c7-3d2e19f3a8c7",
+    "title": "Exposed File Paths",
+    "description": "Finds URLs that may expose internal file paths or directory structures.",
+    "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c5b7d9a3-4e8f-49a1-96c5-7d2e19f3c9b7",
+    "title": "Command Execution Parameters",
+    "description": "Finds URLs that may allow command execution via query parameters.",
+    "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": "e2d9b5a7-3c4f-49a1-87c5-6d1f82e5c79a",
+    "title": "Exposed Amazon S3 Buckets",
+    "description": "Finds publicly accessible Amazon S3 storage buckets that may contain sensitive files.",
+    "content": "site:s3.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b9d7a5c2-4e3f-49a1-86c5-2d8e17f3c9a7",
+    "title": "Exposed Azure Storage Blobs",
+    "description": "Finds publicly accessible Azure Blob Storage containers.",
+    "content": "site:blob.core.windows.net '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a3d5c9b7-2e4f-49a1-97c5-7d2e19f3c8a7",
+    "title": "Exposed Google Cloud Storage Buckets",
+    "description": "Finds publicly accessible Google Cloud Storage buckets.",
+    "content": "site:googleapis.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c7a9d5b3-4f2e-49a1-96c5-2d8e17f3c9b7",
+    "title": "Exposed Google Drive Links",
+    "description": "Finds publicly shared Google Drive files that may contain sensitive data.",
+    "content": "site:drive.google.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "d5c9a7b3-4e2f-49a1-97c5-6d1f82e5c79a",
+    "title": "Exposed DevOps Pipelines",
+    "description": "Finds publicly accessible DevOps pipelines that may expose sensitive CI/CD information.",
+    "content": "site:dev.azure.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e7b9d5a3-4c2f-49a1-86c5-2d8e17f3c9a7",
+    "title": "Exposed OneDrive Files",
+    "description": "Finds publicly accessible OneDrive links that may contain sensitive files.",
+    "content": "site:onedrive.live.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a5d9c7b3-2e4f-49a1-97c5-7d2e19f3c8a7",
+    "title": "Exposed DigitalOcean Spaces",
+    "description": "Finds publicly accessible DigitalOcean Spaces storage containers.",
+    "content": "site:digitaloceanspaces.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c3b7d5a9-4f2e-49a1-96c5-2d8e17f3c9b7",
+    "title": "Exposed S3 External Buckets",
+    "description": "Finds publicly accessible Amazon S3 external storage buckets.",
+    "content": "site:s3-external-1.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "d8f2b3a5-7c4e-42a1-98d7-5e2c19f3a8b7",
+    "title": "Exposed Dualstack S3 Buckets",
+    "description": "Finds publicly accessible dualstack Amazon S3 storage buckets.",
+    "content": "site:s3.dualstack.us-east-1.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b7a9c5d3-2e4f-49a1-86c5-6d1f82e5c79a",
+    "title": "Exposed Dropbox Files",
+    "description": "Finds publicly accessible Dropbox shared links.",
+    "content": "site:dropbox.com/s '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a5c7d9b3-4f2e-49a1-97c5-2d8e17f3c9b7",
+    "title": "Exposed Box.com Files",
+    "description": "Finds publicly shared Box.com links that may contain sensitive files.",
+    "content": "site:box.com/s '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c9d7a3b5-4e2f-49a1-96c5-7d2e19f3c8a7",
+    "title": "Exposed Google Docs",
+    "description": "Finds publicly shared Google Docs files.",
+    "content": "site:docs.google.com inurl:'/d/' '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e5b9d7a3-4c2f-49a1-87c5-2d8e17f3c9a7",
+    "title": "Exposed JFrog Artifactory Repositories",
+    "description": "Finds publicly accessible JFrog repositories that may contain sensitive code or configurations.",
+    "content": "site:jfrog.io '[TARGET]'",
+    "category": "Software and Data Integrity Failures (A08:2021)",
+    "icon": "software.svg"
+  },
+  {
+    "id": "a7c9d5b3-2e4f-49a1-97c5-6d1f82e5c79a",
+    "title": "Exposed Firebase Databases",
+    "description": "Finds publicly accessible Firebase databases that may expose sensitive data.",
+    "content": "site:firebaseio.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b7c9d5a3-2e4f-49a1-97c5-6d1f82e5c79a",
+    "title": "Exposed Development and Staging Environments",
+    "description": "Finds test, staging, or demo environments that may contain sensitive information.",
+    "content": "inurl:test | inurl:env | inurl:dev | inurl:staging | inurl:sandbox | inurl:debug | inurl:temp | inurl:internal | inurl:demo site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c9d7b5a3-4f2e-49a1-86c5-2d8e17f3c9b7",
+    "title": "Exposed Sensitive Documents",
+    "description": "Finds publicly accessible document files like PDFs, Word, and Excel files.",
+    "content": "site:[TARGET] ext:txt | ext:pdf | ext:xml | ext:xls | ext:xlsx | ext:ppt | ext:pptx | ext:doc | ext:docx",
+    "category": "Insecure Design (A04:2021)",
+    "icon": "design.svg"
+  },
+  {
+    "id": "a5d9c7b3-4e2f-49a1-96c5-7d2e19f3c8a7",
+    "title": "Exposed Confidential Information",
+    "description": "Finds publicly available documents marked as confidential or internal use only.",
+    "content": "intext:'confidential' | intext:'Not for Public Release' | intext:'internal use only' | intext:'do not distribute'",
+    "category": "Insecure Design (A04:2021)",
+    "icon": "design.svg"
+  },
+  {
+    "id": "e3b7d5a9-4c2f-49a1-97c5-2d8e17f3c9a7",
+    "title": "Exposed User Credentials",
+    "description": "Finds URLs that may contain leaked user credentials like emails and passwords.",
+    "content": "inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:[TARGET]",
+    "category": "Identification and Authentication Failures (A07:2021)",
+    "icon": "user.svg"
+  },
+  {
+    "id": "b9c7d5a3-2e4f-49a1-86c5-6d1f82e5c79a",
+    "title": "Exposed API Query Parameters",
+    "description": "Finds URLs that may contain sensitive API query parameters.",
+    "content": "inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "d3e7b9c5-4f2a-49a1-96c5-3a8d7f2b9c5a",
+    "title": "Exposed Amazon S3 Buckets",
+    "description": "Finds publicly accessible Amazon S3 storage buckets.",
+    "content": "site:s3.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b5a9d7c3-2e4f-49a1-97c5-6d1e82f3c79a",
+    "title": "Exposed Azure Blob Storage",
+    "description": "Finds publicly accessible Microsoft Azure Blob storage.",
+    "content": "site:blob.core.windows.net '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c7d9b5a3-4f2e-49a1-86c5-2d8e17f3c9b7",
+    "title": "Exposed Google Cloud Storage",
+    "description": "Finds publicly accessible Google Cloud storage buckets.",
+    "content": "site:googleapis.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e3b9d7c5-4c2f-49a1-97c5-2d8e17f3c9a7",
+    "title": "Exposed Google Drive Files",
+    "description": "Finds publicly shared files on Google Drive.",
+    "content": "site:drive.google.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a5d7b9c3-4e2f-49a1-96c5-7d2e19f3c8a7",
+    "title": "Exposed Azure DevOps Repositories",
+    "description": "Finds publicly accessible Azure DevOps repositories.",
+    "content": "site:dev.azure.com '[TARGET]'",
+    "category": "Software and Data Integrity Failures (A08:2021)",
+    "icon": "software.svg"
+  },
+  {
+    "id": "e7b3d5c9-2c4f-49a1-87c5-6d1e82f3c79a",
+    "title": "Exposed OneDrive Files",
+    "description": "Finds publicly shared files on OneDrive.",
+    "content": "site:onedrive.live.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "b9c5d7a3-2e4f-49a1-86c5-6d1f82e5c79a",
+    "title": "Exposed DigitalOcean Spaces",
+    "description": "Finds publicly accessible DigitalOcean Spaces storage.",
+    "content": "site:digitaloceanspaces.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "c5a9d7b3-4f2e-49a1-96c5-2d8e17f3c9b7",
+    "title": "Exposed AWS External Storage",
+    "description": "Finds public AWS external storage buckets.",
+    "content": "site:s3-external-1.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "a3d9b7c5-4e2f-49a1-86c5-7d2e19f3c8a7",
+    "title": "Exposed AWS DualStack Storage",
+    "description": "Finds public AWS DualStack storage buckets.",
+    "content": "site:s3.dualstack.us-east-1.amazonaws.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": "e5c9d7a3-4c2f-49a1-96c5-2d8e17f3c9a7",
+    "title": "Exposed Dropbox Files",
+    "description": "Finds publicly shared files on Dropbox.",
+    "content": "site:dropbox.com/s '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
   }
 ]
