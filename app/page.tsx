@@ -179,10 +179,11 @@ export default function Home() {
 
           <div className="flex md:flex-row items-start justify-center gap-2">
             <p className="flex items-center justify-center gap-2">
-              <SearchIcon /> Total Dorks: {dorks?.length ?? 0}
+              <SearchIcon /> Total: {dorks?.length ?? 0}
             </p>
+            <div className="h-6 w-[2px] bg-white mx-2"></div>
             <p className="flex items-center justify-center gap-2">
-              <FilterIcon /> Filtered Dorks: {filteredDorks.length ?? 0}
+              <FilterIcon /> Filtered: {filteredDorks.length ?? 0}
             </p>
           </div>
         </div>
