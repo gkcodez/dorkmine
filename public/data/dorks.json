@@ -638,5 +638,165 @@
     "content": "intext:\"security@\" | intext:\"vuln@\"",
     "category": "Bug Bounty Programs",
     "icon": "rocket.svg"
+  },
+  {
+    "id": 81,
+    "title": "Exposed User Profile IDs",
+    "description": "Finds URLs exposing numeric user IDs, which may indicate IDOR vulnerabilities.",
+    "content": "site:[TARGET] inurl:\"profile.php?id=\" | inurl:\"user?id=\" | inurl:\"member?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 82,
+    "title": "Ticketing Systems with IDOR Risk",
+    "description": "Finds ticketing portals where IDs might be incremented to access other users’ data.",
+    "content": "site:[TARGET] inurl:\"ticket?id=\" | inurl:\"case?id=\" | inurl:\"support?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 83,
+    "title": "Order Invoice Access",
+    "description": "Finds order confirmation pages that might allow IDOR-based order access.",
+    "content": "site:[TARGET] inurl:\"order?id=\" | inurl:\"invoice?id=\" | inurl:\"purchase?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 84,
+    "title": "Exposed Private Messages or Chats",
+    "description": "Identifies private messaging systems where message IDs might be predictable.",
+    "content": "site:[TARGET] inurl:\"message?id=\" | inurl:\"chat?id=\" | inurl:\"pm?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 85,
+    "title": "Unprotected File Downloads",
+    "description": "Finds file download endpoints that might allow IDOR-based access to unauthorized files.",
+    "content": "site:[TARGET] inurl:\"download.php?file=\" | inurl:\"getfile?id=\" | inurl:\"document?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 86,
+    "title": "Exposed Billing Statements",
+    "description": "Finds billing-related pages that might expose sensitive financial documents via IDOR.",
+    "content": "site:[TARGET] inurl:\"billing?id=\" | inurl:\"statement?id=\" | inurl:\"accounting?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 87,
+    "title": "Admin Panel with ID Reference",
+    "description": "Finds admin panel URLs where ID-based access might be possible.",
+    "content": "site:[TARGET] inurl:\"admin?id=\" | inurl:\"dashboard?user=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 88,
+    "title": "Exposed Session Identifiers",
+    "description": "Finds URLs leaking session tokens that could be exploited for IDOR.",
+    "content": "site:[TARGET] inurl:\"session?id=\" | inurl:\"auth_token=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 89,
+    "title": "Vulnerable API Endpoints",
+    "description": "Finds API endpoints with predictable user or object identifiers.",
+    "content": "site:[TARGET] inurl:\"/api/v1/user?id=\" | inurl:\"/api/v1/orders?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 90,
+    "title": "IDOR in Medical Records",
+    "description": "Finds healthcare-related systems where patient records may be exposed via IDOR.",
+    "content": "site:[TARGET] inurl:\"patient?id=\" | inurl:\"record?id=\" | inurl:\"medical?id=\"",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 91,
+    "title": "Potentially Sensitive Directory Listings",
+    "description": "Finds directories that may contain sensitive information, misconfigurations, or exposed files.",
+    "content": "inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": 92,
+    "title": "Command Injection Risk",
+    "description": "Finds potential command execution parameters that could be exploited.",
+    "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": 93,
+    "title": "Error and Debug Information Exposure",
+    "description": "Finds error pages that might reveal sensitive server or application details.",
+    "content": "inurl:'error' | intitle:'exception' | intitle:'failure' | intitle:'server at' | inurl:exception | 'database error' | 'SQL syntax' | 'undefined index' | 'unhandled exception' | 'stack trace' site:[TARGET]",
+    "category": "Security Logging & Monitoring Failures (A09:2021)",
+    "icon": "log.svg"
+  },
+  {
+    "id": 94,
+    "title": "Exposed API Endpoints",
+    "description": "Finds public API endpoints that might be accessible without authentication.",
+    "content": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
+  },
+  {
+    "id": 95,
+    "title": "Open Redirect Vulnerabilities",
+    "description": "Finds URLs that could be vulnerable to open redirect attacks.",
+    "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": 96,
+    "title": "Exposed Configuration and Backup Files",
+    "description": "Finds sensitive configuration and backup files that might contain credentials or internal data.",
+    "content": "site:[TARGET] ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": 97,
+    "title": "Exposed Search Query Parameters",
+    "description": "Finds search endpoints that could be vulnerable to injection attacks.",
+    "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
+    "category": "Injection (A03:2021)",
+    "icon": "injection.svg"
+  },
+  {
+    "id": 98,
+    "title": "Cloud Storage Exposure",
+    "description": "Finds publicly accessible cloud storage locations where sensitive data might be exposed.",
+    "content": "site:s3.amazonaws.com '[TARGET]' | site:blob.core.windows.net '[TARGET]' | site:googleapis.com '[TARGET]' | site:drive.google.com '[TARGET]' | site:dev.azure.com '[TARGET]'",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": 99,
+    "title": "LFI and Directory Traversal Risk",
+    "description": "Finds file inclusion parameters that might be vulnerable to LFI attacks.",
+    "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
+    "category": "Security Misconfiguration (A05:2021)",
+    "icon": "config.svg"
+  },
+  {
+    "id": 100,
+    "title": "Parameter-Based IDOR Detection",
+    "description": "Finds common URL parameters that might be vulnerable to IDOR attacks.",
+    "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
+    "category": "Broken Access Control (A01:2021)",
+    "icon": "access.svg"
   }
 ]

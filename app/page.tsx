@@ -129,7 +129,7 @@ export default function Home() {
             <div className="flex items-start justify-center text-white ">
               <h1 className="flex items-center text-4xl font-bold tracking-wide p-1">
 
-                D<SearchCheckIcon className="text-amber-300 font-bold w-10 h-10" />rkmine
+                D<SearchCheckIcon className="text-yellow-400 font-bold w-12 h-12" />rkmine
               </h1>
               1.0.0
             </div>
@@ -140,7 +140,10 @@ export default function Home() {
             >
               <div className="flex flex-col items-center justify-center gap-1 text-white">
                 <p>
-                  Developed by: <span className="text-amber-300 underline">@gkcodez</span>
+                  Developed by: <span className="text-yellow-300 relative group px-0 py-2">
+                    @gkcodez
+                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-300 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                  </span>
                 </p>
               </div>
             </a>
@@ -196,7 +199,7 @@ export default function Home() {
                 </span>{" "}
                 {!isUpdatingTarget && (
                   <div className="flex items-center gap-2">
-                    <span id="currentTarget" className="text-amber-600">
+                    <span id="currentTarget" className="text-yellow-400">
                       {target ? target : "Target not configured"}
                     </span>
                     <Button variant="default" type="button" onClick={handleEditButtonClick} className="bg-cyan-600 text-white hover:bg-cyan-700">
