@@ -796,7 +796,7 @@
     "title": "Potentially Sensitive Directory Listings",
     "description": "Finds directories that may contain sensitive information, misconfigurations, or exposed files.",
     "content": "inurl:conf | inurl:env | inurl:cgi | inurl:bin | inurl:etc | inurl:root | inurl:sql | inurl:backup | inurl:admin | inurl:php site:[TARGET]",
-    "category": "Security Misconfiguration",
+    "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
   {
@@ -804,7 +804,7 @@
     "title": "Command Injection Risk",
     "description": "Finds potential command execution parameters that could be exploited.",
     "content": "inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:[TARGET]",
-    "category": "Injection",
+    "category": "Injection (A03:2021)",
     "icon": "injection.svg"
   },
   {
@@ -812,7 +812,7 @@
     "title": "Cloud Storage Exposure",
     "description": "Finds publicly accessible cloud storage locations where sensitive data might be exposed.",
     "content": "site:s3.amazonaws.com '[TARGET]' | site:blob.core.windows.net '[TARGET]' | site:googleapis.com '[TARGET]' | site:drive.google.com '[TARGET]' | site:dev.azure.com '[TARGET]'",
-    "category": "Security Misconfiguration",
+    "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
   {
@@ -820,7 +820,7 @@
     "title": "Exposed API Endpoints",
     "description": "Finds public API endpoints that might be accessible without authentication.",
     "content": "site:[TARGET] inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3",
-    "category": "Broken Access Control",
+    "category": "Broken Access Control (A01:2021)",
     "icon": "access.svg"
   },
   {
@@ -828,7 +828,7 @@
     "title": "Error and Debug Information Exposure",
     "description": "Finds error pages that might reveal sensitive server or application details.",
     "content": "inurl:'error' | intitle:'exception' | intitle:'failure' | intitle:'server at' | inurl:exception | 'database error' | 'SQL syntax' | 'undefined index' | 'unhandled exception' | 'stack trace' site:[TARGET]",
-    "category": "Security Logging & Monitoring Failures",
+    "category": "Security Logging & Monitoring Failures (A09:2021)",
     "icon": "log.svg"
   },
   {
@@ -836,7 +836,7 @@
     "title": "Exposed Configuration and Backup Files",
     "description": "Finds sensitive configuration and backup files that might contain credentials or internal data.",
     "content": "site:'[TARGET]' ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json",
-    "category": "Security Misconfiguration",
+    "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
   {
@@ -844,7 +844,7 @@
     "title": "Exposed Search Query Parameters",
     "description": "Finds search endpoints that could be vulnerable to injection attacks.",
     "content": "inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:[TARGET]",
-    "category": "Injection",
+    "category": "Injection (A03:2021)",
     "icon": "injection.svg"
   },
   {
@@ -852,7 +852,7 @@
     "title": "Open Redirect Vulnerabilities",
     "description": "Finds URLs that could be vulnerable to open redirect attacks.",
     "content": "inurl:url= | inurl:return= | inurl:next= | inurl:redirect= | inurl:redir= | inurl:ret= | inurl:r2= | inurl:page= inurl:& inurl:http site:[TARGET]",
-    "category": "Security Misconfiguration",
+    "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
   {
@@ -860,7 +860,7 @@
     "title": "LFI and Directory Traversal Risk",
     "description": "Finds file inclusion parameters that might be vulnerable to LFI attacks.",
     "content": "inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:[TARGET]",
-    "category": "Security Misconfiguration",
+    "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
   {
@@ -868,7 +868,7 @@
     "title": "Parameter-Based IDOR Detection",
     "description": "Finds common URL parameters that might be vulnerable to IDOR attacks.",
     "content": "inurl:id= | inurl:pid= | inurl:category= | inurl:cat= | inurl:action= | inurl:sid= | inurl:dir= inurl:& site:[TARGET]",
-    "category": "Broken Access Control",
+    "category": "Broken Access Control (A01:2021)",
     "icon": "access.svg"
   },
   {
@@ -1213,7 +1213,7 @@
     "description": "Finds login pages that may be publicly accessible.",
     "content": "inurl:login | inurl:signin | intitle:login | intitle:signin | inurl:secure site:[TARGET]",
     "category": "Identification and Authentication Failures (A07:2021)",
-    "icon": "user.svg"
+    "icon": "incognito.svg"
   },
   {
     "id": "e9b7d5c2-4a3f-49a1-86c5-2d8e17f3c9a7",
@@ -1429,7 +1429,7 @@
     "description": "Finds URLs that may contain leaked user credentials like emails and passwords.",
     "content": "inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:[TARGET]",
     "category": "Identification and Authentication Failures (A07:2021)",
-    "icon": "user.svg"
+    "icon": "incognito.svg"
   },
   {
     "id": "b9c7d5a3-2e4f-49a1-86c5-6d1f82e5c79a",
