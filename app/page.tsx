@@ -20,6 +20,8 @@ import {
   FilterIcon,
   SearchCheckIcon,
   InfoIcon,
+  CoffeeIcon,
+  HeartIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -152,8 +154,12 @@ export default function Home() {
                 </p>
               </div>
             </a>
-            <div className="flex items-center justify-center w-full">
-            <a href="https://www.buymeacoffee.com/gkcodez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className="w-36 h-10" /></a>
+            <div className="flex flex-col items-center justify-center w-full gap-2  ">
+            <p className="text-white">Dorkmine is opensource and it always will be.</p>
+            <p className="text-white">If you like my work, consider supporting me!</p>
+            <a href="https://razorpay.me/@gkcodez" target="_blank">
+              <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><HeartIcon/> Support</Button>
+            </a>
             </div>
           </div>
         </div>
