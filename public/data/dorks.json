@@ -459,7 +459,7 @@
     "id": "2b5f64cc-8e40-45c7-b0de-4030d64b9c08",
     "title": "Publicly Accessible WebEx Recordings",
     "description": "Finds exposed Cisco WebEx meeting recordings.",
-    "content": "site:webex.com [TARGET] inurl:\"/recording\"",
+    "content": "site:webex.com '[TARGET]' inurl:\"/recording\"",
     "category": "Security Misconfiguration (A05:2021)",
     "icon": "config.svg"
   },
