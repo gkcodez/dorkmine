@@ -204,7 +204,7 @@ export default function Home() {
                 </span>{" "}
                 {!isUpdatingTarget && (
                   <div className="flex items-center gap-2">
-                    <span id="currentTarget" className="text-yellow-400">
+                    <span id="currentTarget" className="text-yellow-600">
                       {target ? target : "Target not configured"}
                     </span>
                     <Button variant="default" type="button" onClick={handleEditButtonClick} className="bg-cyan-600 text-white hover:bg-cyan-700">
