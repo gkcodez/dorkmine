@@ -130,10 +130,10 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full">
       <div className="flex flex-col items-center justify-items-center w-full">
-        <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-600 p-2 z-10">
-          <div className="p-2">
+        <div className="flex flex-col items-center justify-center gap-2 text-center w-full bg-cyan-600 p-2 z-10">
+          <div className="flex flex-col items-center justify-center gap-2 w-full p-2">
             <div className="flex items-start justify-center text-white ">
-              <h1 className="flex items-center text-4xl font-bold tracking-wide p-1">
+              <h1 className="flex items-center text-4xl font-bold tracking-wide">
 
                 D<SearchCheckIcon className="text-yellow-400 font-bold w-12 h-12" />rkmine
               </h1>
@@ -152,6 +152,9 @@ export default function Home() {
                 </p>
               </div>
             </a>
+            <div className="flex items-center justify-center w-full">
+            <a href="https://www.buymeacoffee.com/gkcodez" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" className="w-36 h-10" /></a>
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md z-10">
