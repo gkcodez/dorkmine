@@ -15,15 +15,10 @@ import {
   Edit,
   Save,
   Folder,
-  TargetIcon,
   SearchIcon,
   FilterIcon,
   SearchCheckIcon,
   InfoIcon,
-  CoffeeIcon,
-  HeartIcon,
-  RocketIcon,
-  SeparatorVerticalIcon,
   Code2Icon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -97,13 +92,19 @@ export default function Home() {
     return results;
   }, [search, dorks, selectedCategory]);
 
+  function updateDorkContentTargetPlaceholder(dork: Dork) {
+    let dorkContent = dork.content;
+    if (target) {
+      dorkContent = dork.content.replaceAll("[TARGET]", target);
+    } else {
+      dorkContent = dork.content.replaceAll("site:", "").replaceAll("'[TARGET]'", "").replaceAll("[TARGET]", "");
+    }
+    return dorkContent;
+  }
+
   function googleSearch(dork: Dork) {
     let searchTerm = dork.content;
-    if (target) {
-      searchTerm = searchTerm.replaceAll("[TARGET]", target);
-    } else {
-      searchTerm = searchTerm.replaceAll("site:", "").replaceAll("'[TARGET]'", "").replaceAll("[TARGET]", "");
-    }
+    searchTerm = updateDorkContentTargetPlaceholder(dork);
     const baseUrl = "https://www.google.com";
     const url = `${baseUrl}/search?q=${encodeURIComponent(searchTerm)}`;
     window.open(url, `${dork.title}`);
