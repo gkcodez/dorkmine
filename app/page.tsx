@@ -241,7 +241,7 @@ export default function Home() {
               </div>
             )}
             {dorks?.length !== 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-2 p-2 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 p-2 w-full">
                 {filteredDorks.map((dork, index) => (
                   <Card
                     key={index}
