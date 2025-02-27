@@ -140,27 +140,26 @@ export default function Home() {
                 D<SearchCheckIcon className="text-yellow-400 font-bold w-12 h-12" />rkmine
               </h1>
             </div>
-            <a
-              href="http://linkedin.com/in/gkcodez"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="flex flex-col items-center justify-center gap-1 text-white">
-                <p>
-                  Developed by: <span className="text-yellow-300 relative group px-0 py-2">
-                    @gkcodez
+            <div className="flex flex-col items-center justify-center w-full gap-2">
+              <div>
+                <p className="flex items-center justify-center gap-1 text-white">
+                  <span>Opensource google dork engine developed by</span>
+                  <a
+                    href="http://linkedin.com/in/gkcodez"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-yellow-300 relative group px-0 py-1"
+                  >
+                    @gkcodez.
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-300 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                  </span>
-                </p>
+                  </a></p>
+                <p className="text-white">If you like my work, consider supporting me!</p>
               </div>
-            </a>
-            <div className="flex flex-col items-center justify-center w-full gap-2  ">
-            <p className="text-white">Dorkmine is opensource and it always will be.</p>
-            <p className="text-white">If you like my work, consider supporting me!</p>
-            <a href="https://razorpay.me/@gkcodez" target="_blank">
-              <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><HeartIcon/> Support</Button>
-            </a>
+              <a href="https://razorpay.me/@gkcodez" target="_blank">
+                <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><HeartIcon /> Support</Button>
+              </a>
             </div>
+
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md z-10">
