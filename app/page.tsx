@@ -19,6 +19,7 @@ import {
   SearchIcon,
   FilterIcon,
   SearchCheckIcon,
+  InfoIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -39,6 +40,11 @@ import { getFromLocalStorage, saveToLocalStorage } from "@/utils/localStorage";
 import { Dork } from "@/models/dork";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 export default function Home() {
   const [dorks, setDorks] = useState<Dork[]>([]);
@@ -124,7 +130,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-items-center gap-3 w-full h-full">
       <div className="flex flex-col items-center justify-items-center w-full">
-        <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-600 p-2">
+        <div className="flex flex-col items-center gap-2 text-center w-full bg-cyan-600 p-2 z-10">
           <div className="p-2">
             <div className="flex items-start justify-center text-white ">
               <h1 className="flex items-center text-4xl font-bold tracking-wide p-1">
@@ -148,7 +154,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md">
+        <div className="flex flex-col items-center justify-center gap-3 w-full sticky top-0 bg-cyan-600 text-white p-3 shadow-md z-10">
           <form
             className="flex items-center gap-2 w-full md:w-3/4 lg:w-1/2"
           >
@@ -242,12 +248,12 @@ export default function Home() {
                     className="flex flex-col h-full justify-between shadow-md border border-gray-200 hover:shadow-lg transition"
                   >
                     <div className="flex flex-col justify-start">
-                      <div className="w-full flex items-start justify-between">
+                      <div className="w-full flex items-start justify-between relative">
                         <CardHeader
                           className="text-md w-full flex items-start justify-between"
                           onClick={() => googleSearch(dork)}
                         >
-                          <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold">
+                          <CardTitle className="flex items-center justify-start gap-3 text-md font-semibold w-full px-1">
                             <Image
                               src={`/images/icons/${dork.icon}`}
                               onError={(e) => e.currentTarget.src = "/images/icons/search.svg"} // Replace with your image
@@ -257,8 +263,19 @@ export default function Home() {
                               className="rounded-lg"
                             /> {dork.title}</CardTitle>
                         </CardHeader>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button variant="ghost" className="absolute right-0 top-0"><InfoIcon /></Button>
+                          </PopoverTrigger>
+                          <PopoverContent className="z-5">
+                            <div className="flex flex-col items-center justify-center gap-2 p-2">
+                              <h3 className="text-md font-semibold">Details</h3>
+                              <Separator />
+                              <p className="text-sm text-gray-600">{dork.content}</p>
+                            </div>
+                          </PopoverContent>
+                        </Popover>
                       </div>
-
                       <CardContent onClick={() => googleSearch(dork)}>
                         <p className="text-sm text-gray-600">
                           {dork.description}
