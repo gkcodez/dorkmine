@@ -22,6 +22,9 @@ import {
   InfoIcon,
   CoffeeIcon,
   HeartIcon,
+  RocketIcon,
+  SeparatorVerticalIcon,
+  Code2Icon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
@@ -156,7 +159,7 @@ export default function Home() {
                 <p className="text-white">If you like my work, consider supporting me!</p>
               </div>
               <a href="https://razorpay.me/@gkcodez" target="_blank">
-                <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><HeartIcon /> Support</Button>
+                <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><Code2Icon/> Support Me</Button>
               </a>
             </div>
 
