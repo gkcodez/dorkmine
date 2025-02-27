@@ -146,9 +146,8 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center justify-center w-full gap-2">
               <div>
-                <p className="flex items-center justify-center gap-1 text-white">
-                  <span>Opensource google dork engine developed by</span>
-                  <a
+                <p className="text-white">
+                  Opensource google dork engine developed by <a
                     href="http://linkedin.com/in/gkcodez"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -156,7 +155,8 @@ export default function Home() {
                   >
                     @gkcodez.
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-300 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                  </a></p>
+                  </a>
+                  </p>
                 <p className="text-white">If you like my work, consider supporting me!</p>
               </div>
               <a href="https://razorpay.me/@gkcodez" target="_blank">
