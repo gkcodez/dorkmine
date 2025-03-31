@@ -39,6 +39,6 @@ Designed with a minimalistic yet aesthetic UI, DorkMine combines simplicity with
 Access dorkmine here: https://dorkmine.vercel.app
 
 If you like my work, consider supporting me 👍
-https://razorpay.me/@gkcodez
+https://razorpay.me/@gktomic
 
 
