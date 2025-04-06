@@ -148,19 +148,19 @@ export default function Home() {
               <div>
                 <p className="text-white">
                   Opensource google dork engine developed by <a
-                    href="http://linkedin.com/in/gktomic"
+                    href="http://linkedin.com/in/gkcodez"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-yellow-300 relative group px-0 py-1"
                   >
-                    @gktomic.
+                    @gkcodez.
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-300 transition-all duration-300 ease-in-out group-hover:w-full"></span>
                   </a>
-                  </p>
+                </p>
                 <p className="text-white">If you like my work, consider supporting me!</p>
               </div>
-              <a href="https://razorpay.me/@gktomic" target="_blank">
-                <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><Code2Icon/> Support Me</Button>
+              <a href="https://razorpay.me/@gkcodez" target="_blank">
+                <Button className="bg-yellow-300 text-gray-800 hover:bg-yellow-400"><Code2Icon /> Support Me</Button>
               </a>
             </div>
 
